@@ -11,7 +11,7 @@
     "format:fix": "prettier ./src --write",
     "pre-commit": "lint-staged",
     "prepare": "husky install",
-    "lint-staged": "prettier ./src --write,lint --fix"
+    "lint-staged": "lint"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.3",
