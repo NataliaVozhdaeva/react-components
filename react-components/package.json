@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "format:fix": "prettier ./src --write",
     "pre-commit": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-staged": "prettier ./src --write,lint --fix"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.3",
