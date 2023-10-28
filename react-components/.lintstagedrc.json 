@@ -1,11 +1,11 @@
 {
   "*.tsx": [
     "prettier --write",
-    "lint"
+    "eslint"
   ],
   "*.html": [
     "prettier --write",
-    "lint"
+    "eslint"
   ],
   "*.css": "prettier --write"
 }
