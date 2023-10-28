@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+echo "run precommit"
 . "$(dirname -- "$0")/_/husky.sh"
 echo "run precommit"
 npx lint-staged
