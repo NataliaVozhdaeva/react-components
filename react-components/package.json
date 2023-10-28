@@ -9,8 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "format:fix": "prettier ./src --write",
-    "prepare": "husky install",
-    "lint-staged": "lint"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.3",
