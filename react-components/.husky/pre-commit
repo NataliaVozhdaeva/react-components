@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+ngchfhffhjf
 echo "run precommit"
 . "$(dirname -- "$0")/_/husky.sh"
 echo "run precommit"
