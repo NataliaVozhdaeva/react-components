@@ -1,16 +1,14 @@
-import './App.css';
+import { Header } from './components/header/header';
+import { Main } from './components/main/main';
+
+
 
 function App() {
   return (
     <>
-      <div>Hello world!</div>
-      <input
-        id="dinosour-name"
-        className="dinosour-input"
-        type="text"
-        data-text="this is my dinosour"
-      />
-    </>
+   <Header />
+   <Main />
+   </>
   );
 }
 
