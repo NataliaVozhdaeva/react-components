@@ -38,6 +38,14 @@
     "typescript": "^5.0.2"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "eslint"
+    "*.ts": [
+      "prettier --write",
+      "eslint"
+    ],
+    "*.html": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.scss": "prettier --write"
   }
 }
