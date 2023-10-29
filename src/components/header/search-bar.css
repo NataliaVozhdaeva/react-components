@@ -1,13 +1,12 @@
-.title{
+.title {
   color: aliceblue;
 }
 
-
-.search-bar{
+.search-bar {
   box-sizing: border-box;
   min-width: 350px;
   min-height: 30px;
-  padding: 0 15px ;
+  padding: 0 15px;
 
   color: aliceblue;
 
@@ -15,10 +14,37 @@
   border: 1px aliceblue solid;
   background-color: transparent;
 
-  outline: none
+  outline: none;
 }
 
-.search-bar:focus{
+.search-bar:focus {
   border: 2px wheat solid;
-  
+}
+
+.search-container {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  box-sizing: border-box;
+  padding: 10px 15px;
+
+  color: aliceblue;
+  font-weight: 700;
+
+  border: 5px solid;
+  border-color: #002f55 #1e213d #1e213d #002f55;
+  background-color: #0e294b;
+
+  border-radius: 10px;
+}
+
+.btn:hover {
+  color: wheat;
+  cursor: pointer;
+}
+
+.btn:active {
+  border-color: #1e213d #002f55 #002f55 #1e213d;
 }

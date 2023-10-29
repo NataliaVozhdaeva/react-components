@@ -1,14 +1,19 @@
-.main-content{
+.main-content {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
   margin: 100px 50px;
 }
 
-
-.card{
+.card {
   width: 350px;
-  height: 550px;
+  height: 200px;
+  padding: 50px;
+
+  color: aliceblue;
+  font-size: 1.5rem;
 
   border: 2px lightsteelblue solid;
   border-radius: 20px;

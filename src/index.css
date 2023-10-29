@@ -4,17 +4,15 @@
   font-weight: 400;
 }
 
-body{
+body {
   background-color: #213547;
   background-image: url('./img/space.jpeg');
   background-size: cover;
 }
 
-#root{
-    max-width: 95vw;
-    margin: auto;
-   
-   
+#root {
+  max-width: 95vw;
+  margin: auto;
 }
 
 @media (prefers-color-scheme: light) {
