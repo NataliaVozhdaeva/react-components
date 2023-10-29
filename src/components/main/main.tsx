@@ -2,10 +2,13 @@ import { Component } from 'react';
 import { ApiService } from '../../services/api';
 import './main.css';
 
-export class Main extends Component {
+export class Main extends Component<
+  object,
+  { name: string; description: string }
+> {
   apiService = new ApiService();
 
-  constructor(props: never) {
+  constructor(props: []) {
     super(props);
     this.getData();
 
