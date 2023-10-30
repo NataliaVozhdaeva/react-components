@@ -1,33 +1,17 @@
 import { Component } from 'react';
-import ApiService from '../../services/api';
 import './main.css';
 
-export class Main extends Component<object, { description: string[] }> {
-  apiService = new ApiService();
+interface T {
+  description: string[];
+}
 
-  constructor(props: []) {
-    super(props);
-    this.getData();
-    this.state = {
-      description: [],
-    };
-  }
-
-  getData() {
-    this.apiService.getResource('').then((item) => {
-      this.setState({
-        description: Object.keys(item),
-      });
-    });
-  }
-
+export class Main extends Component<T, { description: string[] }> {
   render() {
-    const { description } = this.state;
     return (
       <main className="main-content">
-        <h2 className="title">This site is about:</h2>
+        <h2 className="title">This site is about StarWars:</h2>
         <div className="card-container">
-          {description.map((item, index) => (
+          {this.props.description.map((item, index) => (
             <div className="card" key={index}>
               {item}
             </div>
