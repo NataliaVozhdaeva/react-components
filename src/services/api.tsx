@@ -1,6 +1,6 @@
 import API_PATH from './constants';
 
-export class ApiService {
+export default class ApiService {
   base: string;
 
   constructor() {

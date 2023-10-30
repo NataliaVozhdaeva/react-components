@@ -1,15 +1,16 @@
 .main-content {
+  margin: 100px 50px;
+}
+
+.card-container {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: space-evenly;
-
-  margin: 100px 50px;
 }
 
 .card {
   width: 350px;
-  height: 200px;
   padding: 50px;
 
   color: aliceblue;

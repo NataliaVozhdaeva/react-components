@@ -1,56 +1,38 @@
 import { Component } from 'react';
-import { ApiService } from '../../services/api';
+import ApiService from '../../services/api';
 import './main.css';
 
-export class Main extends Component<
-  object,
-  { name: string; description: string }
-> {
+export class Main extends Component<object, { description: string[] }> {
   apiService = new ApiService();
 
   constructor(props: []) {
     super(props);
     this.getData();
-
     this.state = {
-      name: '',
-      description: '',
+      description: [],
     };
   }
 
   getData() {
-    this.apiService.getPerson('1').then((person) => {
+    this.apiService.getResource('').then((item) => {
       this.setState({
-        name: person.name,
-        description: `
-        height - ${person.height},
-        mass - ${person.mass},
-        hair color - ${person.hair_color},
-        eye color - ${person.eye_color}`,
+        description: Object.keys(item),
       });
     });
   }
 
   render() {
-    const { name, description } = this.state;
-
+    const { description } = this.state;
     return (
       <main className="main-content">
-        <div className="card">
-          <div className="name">
-            <span>Name: </span>
-            <span>{name}</span>
-          </div>
-          <div className="name">
-            <span>Description: </span>
-            <div>{description}</div>
-          </div>
+        <h2 className="title">This site is about:</h2>
+        <div className="card-container">
+          {description.map((item, index) => (
+            <div className="card" key={index}>
+              {item}
+            </div>
+          ))}
         </div>
-        <div className="card" />
-        <div className="card" />
-        <div className="card" />
-        <div className="card" />
-        <div className="card" />
       </main>
     );
   }
