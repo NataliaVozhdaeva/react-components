@@ -17,6 +17,16 @@ export default class ApiService {
     return res.json();
   }
 
+  async search() {
+    const input = document.querySelector('input');
+    if (!input) throw new Error('search-bar was disappear');
+
+    const term = input.value;
+    const res = await this.getResource(`?search=${term}`);
+
+    return res.results;
+  }
+
   async getAllPeople() {
     const res = await this.getResource('people/');
 

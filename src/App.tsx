@@ -1,17 +1,25 @@
 import { Component } from 'react';
 import { Header } from './components/header/header';
-import { Main } from './components/main/main';
+import { MainContent } from './components/main/main-content';
 import ApiService from './services/api';
 
-//https://swapi.dev/api/people/?search=r2
-class App extends Component<object, { description: string[] }> {
+interface State {
+  description: string[];
+  isDefault: boolean;
+}
+
+class App extends Component<
+  State,
+  { description: string[]; isDefault: boolean }
+> {
   apiService = new ApiService();
 
-  constructor(props: []) {
+  constructor(props: State) {
     super(props);
     this.getData();
     this.state = {
       description: [],
+      isDefault: true,
     };
   }
 
@@ -22,11 +30,18 @@ class App extends Component<object, { description: string[] }> {
       });
     });
   }
+
+  searchHandler() {
+    console.log('search');
+  }
+
   render() {
+    const { description } = this.state;
+
     return (
       <>
-        <Header />
-        <Main description={this.state.description} />
+        <Header searchHandler={this.searchHandler} />
+        <MainContent description={description} />
       </>
     );
   }

@@ -1,11 +1,11 @@
 import { Component } from 'react';
-import './main.css';
+import './main-content.css';
 
 interface T {
   description: string[];
 }
 
-export class Main extends Component<T, { description: string[] }> {
+export class MainContent extends Component<T, { description: string[] }> {
   render() {
     return (
       <main className="main-content">
