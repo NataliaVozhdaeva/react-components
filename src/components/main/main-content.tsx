@@ -2,10 +2,10 @@ import { Component } from 'react';
 import './main-content.css';
 
 interface T {
-  description: string[];
+  description: string[][];
 }
 
-export class MainContent extends Component<T, { description: string[] }> {
+export class MainContent extends Component<T, { description: string[][] }> {
   render() {
     return (
       <main className="main-content">
@@ -13,7 +13,7 @@ export class MainContent extends Component<T, { description: string[] }> {
         <div className="card-container">
           {this.props.description.map((item, index) => (
             <div className="card" key={index}>
-              {item}
+              {item.join(': ')}
             </div>
           ))}
         </div>

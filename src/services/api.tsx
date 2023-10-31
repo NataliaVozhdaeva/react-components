@@ -7,7 +7,8 @@ export default class ApiService {
     this.base = API_PATH;
   }
 
-  async getResource(url: string) {
+  async getResource(url: string | undefined) {
+    if (!url) url = '';
     const res = await fetch(`${this.base}${url}`);
 
     if (!res.ok) {
@@ -17,12 +18,8 @@ export default class ApiService {
     return res.json();
   }
 
-  async search() {
-    const input = document.querySelector('input');
-    if (!input) throw new Error('search-bar was disappear');
-
-    const term = input.value;
-    const res = await this.getResource(`?search=${term}`);
+  async search(url: string | undefined) {
+    const res = await this.getResource(`planets/?search=${url}`);
 
     return res.results;
   }

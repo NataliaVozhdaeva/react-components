@@ -4,43 +4,41 @@ import { MainContent } from './components/main/main-content';
 import ApiService from './services/api';
 
 interface State {
-  description: string[];
-  isDefault: boolean;
+  description: string[][];
 }
 
-class App extends Component<
-  State,
-  { description: string[]; isDefault: boolean }
-> {
+class App extends Component<State, { description: string[][] }> {
   apiService = new ApiService();
 
   constructor(props: State) {
     super(props);
-    this.getData();
     this.state = {
       description: [],
-      isDefault: true,
     };
+
+    this.getData('');
   }
 
-  getData() {
-    this.apiService.getResource('').then((item: string) => {
+  getData(url: string) {
+    this.apiService.getResource(url).then((body) => {
       this.setState({
-        description: Object.keys(item),
+        description: Object.entries(body),
       });
     });
   }
 
   searchHandler() {
-    console.log('search');
+    const term = document.querySelector('input')?.value;
+    this.apiService.search(term).then((body) => {
+      console.log(body);
+    });
   }
 
   render() {
     const { description } = this.state;
-
     return (
       <>
-        <Header searchHandler={this.searchHandler} />
+        <Header searchHandler={() => this.searchHandler()} />
         <MainContent description={description} />
       </>
     );
