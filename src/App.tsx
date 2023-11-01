@@ -3,33 +3,29 @@ import { Header } from './components/header/header';
 import { MainContent } from './components/main/main-content';
 import ApiService from './services/api';
 
-interface Item {
-  id: number;
-  dest: string;
-  name: string | undefined;
-  desc: number | string;
-}
-
 interface State {
-  description: string[][] | Item[];
+  description: string[];
+  isDefault: boolean;
 }
 
-class App extends Component<State, { description: string[][] }> {
+class App extends Component<
+  State,
+  { description: string[]; isDefault: boolean }
+> {
   apiService = new ApiService();
-
   constructor(props: State) {
     super(props);
     this.state = {
       description: [],
+      isDefault: true,
     };
-
-    this.getData('');
   }
 
+  newResult: string[] = [];
   getData(url: string) {
     this.apiService.getResource(url).then((body) => {
       this.setState({
-        description: Object.entries(body),
+        description: Object.keys(body),
       });
     });
   }
@@ -44,41 +40,36 @@ class App extends Component<State, { description: string[][] }> {
       'vehicles',
       'starships',
     ];
-
-    const newState: Item[] = [];
+    const newState: string[][] = [];
 
     for (const el of fields) {
       if (!term) throw new Error('type several symbols');
       this.apiService.search(el, term).then((body) => {
         if (body.length > 0) {
           for (let i = 0; i < body.length; i++) {
-            const newItem: Item = {
-              id: 0,
-              dest: '',
-              name: '',
-              desc: 0,
-            };
-            newItem.id = i;
-            newItem.dest = el;
-            newItem.name = body[i].name ? body[i].name : body[i].title;
+            const newItem: string[] = [];
+            newItem.push(el);
+            body[i].name
+              ? newItem.push(body[i].name)
+              : newItem.push(body[i].title);
             switch (true) {
               case el === 'people':
-                newItem.desc = body[i].height;
+                newItem.push(body[i].height);
                 break;
               case el === 'planets':
-                newItem.desc = body[i].population;
+                newItem.push(body[i].population);
                 break;
               case el === 'films':
-                newItem.desc = body[i].opening_crawl;
+                newItem.push(body[i].opening_crawl);
                 break;
               case el === 'species':
-                newItem.desc = body[i].classification;
+                newItem.push(body[i].classification);
                 break;
               case el === 'vehicles':
-                newItem.desc = body[i].manufacturer;
+                newItem.push(body[i].body[i].manufacturer);
                 break;
               default:
-                newItem.desc = body[i].starship_class;
+                newItem.push(body[i].starship_class);
                 break;
             }
             newState.push(newItem);
@@ -87,19 +78,33 @@ class App extends Component<State, { description: string[][] }> {
       });
     }
 
-    console.log(newState);
+    this.setState({
+      isDefault: false,
+      description: newState.flat(),
+    });
+  }
 
-    /*  this.setState({
-      description: newState,
-    });  */
+  updateMain() {
+    const description = this.state.description;
+    console.log(description);
+  }
+
+  componentDidMount() {
+    this.getData('');
+  }
+
+  componentDidUpdate(prevState: State) {
+    if (this.state.isDefault !== prevState.isDefault) {
+      this.updateMain();
+    }
   }
 
   render() {
-    const { description } = this.state;
+    const { description, isDefault } = this.state;
     return (
       <>
         <Header searchHandler={() => this.searchHandler()} />
-        <MainContent description={description} />
+        <MainContent description={description} state={isDefault} />
       </>
     );
   }
