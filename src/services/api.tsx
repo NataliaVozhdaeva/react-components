@@ -18,9 +18,8 @@ export default class ApiService {
     return res.json();
   }
 
-  async search(url: string | undefined) {
-    const res = await this.getResource(`planets/?search=${url}`);
-
+  async search(url: string, term: string) {
+    const res = await this.getResource(`${url}/?search=${term}`);
     return res.results;
   }
 
