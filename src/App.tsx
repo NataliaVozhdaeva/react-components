@@ -3,8 +3,14 @@ import { Header } from './components/header/header';
 import { MainContent } from './components/main/main-content';
 import ApiService from './services/api';
 
+interface Item {
+  'this is': string;
+  'name or title': string;
+  [key: string]: string;
+}
+
 interface State {
-  description: string[];
+  description: Item[];
   isDefault: boolean;
 }
 
@@ -20,11 +26,10 @@ class App extends Component<Record<string, never>, State> {
     this.getData('');
   }
 
-  newResult: string[] = [];
   getData(url: string) {
     this.apiService.getResource(url).then((body) => {
       this.setState({
-        description: Object.keys(body),
+        description: body,
       });
     });
   }
@@ -38,34 +43,38 @@ class App extends Component<Record<string, never>, State> {
       'vehicles',
       'starships',
     ];
-    const newState: string[][] = [];
+    const newState: Item[] = [];
     for (const el of fields) {
       this.apiService.search(el, term).then((body) => {
         if (body.length > 0) {
           for (let i = 0; i < body.length; i++) {
-            const newItem: string[] = [];
-            newItem.push(el);
-            body[i].name
-              ? newItem.push(body[i].name)
-              : newItem.push(body[i].title);
+            const newItem: Item = {
+              'this is': '',
+              'name or title': '',
+              '': '',
+            };
+            newItem['this is'] = el;
+            newItem['name or title'] = body[i].name
+              ? body[i].name
+              : body[i].title;
             switch (true) {
               case el === 'people':
-                newItem.push(body[i].height);
+                newItem.height = body[i].height;
                 break;
               case el === 'planets':
-                newItem.push(body[i].population);
+                newItem.population = body[i].population;
                 break;
               case el === 'films':
-                newItem.push(body[i].opening_crawl);
+                newItem['opening crawl'] = body[i].opening_crawl;
                 break;
               case el === 'species':
-                newItem.push(body[i].classification);
+                newItem.language = body[i].language;
                 break;
               case el === 'vehicles':
-                newItem.push(body[i].body[i].manufacturer);
+                newItem.manufacturer = body[i].manufacturer;
                 break;
               default:
-                newItem.push(body[i].starship_class);
+                newItem['starship class'] = body[i].starship_class;
                 break;
             }
             newState.push(newItem);
@@ -80,14 +89,16 @@ class App extends Component<Record<string, never>, State> {
   }
 
   render() {
-    const description = this.state.description;
     return (
       <>
         <Header
           description={this.state.description}
           callbackSearch={this.searchHandler.bind(this)}
         />
-        <MainContent description={description} />
+        <MainContent
+          description={this.state.description}
+          isDefault={this.state.isDefault}
+        />
       </>
     );
   }
