@@ -8,17 +8,16 @@ interface State {
   isDefault: boolean;
 }
 
-class App extends Component<
-  State,
-  { description: string[]; isDefault: boolean }
-> {
+class App extends Component<Record<string, never>, State> {
   apiService = new ApiService();
-  constructor(props: State) {
-    super(props);
-    this.state = {
-      description: [],
-      isDefault: true,
-    };
+
+  state = {
+    description: [],
+    isDefault: true,
+  };
+
+  componentDidMount() {
+    this.getData('');
   }
 
   newResult: string[] = [];
@@ -30,8 +29,7 @@ class App extends Component<
     });
   }
 
-  searchHandler() {
-    const term = document.querySelector('input')?.value;
+  searchHandler(term = '') {
     const fields = [
       'people',
       'planets',
@@ -41,9 +39,7 @@ class App extends Component<
       'starships',
     ];
     const newState: string[][] = [];
-
     for (const el of fields) {
-      if (!term) throw new Error('type several symbols');
       this.apiService.search(el, term).then((body) => {
         if (body.length > 0) {
           for (let i = 0; i < body.length; i++) {
@@ -75,36 +71,23 @@ class App extends Component<
             newState.push(newItem);
           }
         }
+        this.setState({
+          isDefault: false,
+          description: newState.flat(),
+        });
       });
-    }
-
-    this.setState({
-      isDefault: false,
-      description: newState.flat(),
-    });
-  }
-
-  updateMain() {
-    const description = this.state.description;
-    console.log(description);
-  }
-
-  componentDidMount() {
-    this.getData('');
-  }
-
-  componentDidUpdate(prevState: State) {
-    if (this.state.isDefault !== prevState.isDefault) {
-      this.updateMain();
     }
   }
 
   render() {
-    const { description, isDefault } = this.state;
+    const description = this.state.description;
     return (
       <>
-        <Header searchHandler={() => this.searchHandler()} />
-        <MainContent description={description} state={isDefault} />
+        <Header
+          description={this.state.description}
+          callbackSearch={this.searchHandler.bind(this)}
+        />
+        <MainContent description={description} />
       </>
     );
   }

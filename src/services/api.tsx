@@ -18,20 +18,8 @@ export default class ApiService {
     return res.json();
   }
 
-  async search(url: string, term: string) {
-    const res = await this.getResource(`${url}/?search=${term}`);
+  async search(searchUrl: string, term: string) {
+    const res = await this.getResource(`${searchUrl}/?search=${term}`);
     return res.results;
-  }
-
-  async getAllPeople() {
-    const res = await this.getResource('people/');
-
-    return res.results;
-  }
-
-  async getPerson(id: string) {
-    const res = await this.getResource(`people/${id}/`);
-
-    return res;
   }
 }
