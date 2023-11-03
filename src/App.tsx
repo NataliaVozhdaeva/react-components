@@ -2,17 +2,7 @@ import { Component } from 'react';
 import { Header } from './components/header/header';
 import { MainContent } from './components/main/main-content';
 import ApiService from './services/api';
-
-interface Item {
-  'this is': string;
-  'name or title': string;
-  [key: string]: string;
-}
-
-interface State {
-  description: Item[];
-  isDefault: boolean;
-}
+import { State, Item } from './services/interfaces';
 
 class App extends Component<Record<string, never>, State> {
   apiService = new ApiService();
@@ -51,7 +41,6 @@ class App extends Component<Record<string, never>, State> {
             const newItem: Item = {
               'this is': '',
               'name or title': '',
-              '': '',
             };
             newItem['this is'] = el;
             newItem['name or title'] = body[i].name

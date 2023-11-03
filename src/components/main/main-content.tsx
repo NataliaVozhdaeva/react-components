@@ -1,19 +1,9 @@
 import { Component } from 'react';
+import { State, Item } from '../../services/interfaces';
 import './main-content.css';
 
-interface MainState {
-  description: Item[];
-  isDefault: boolean;
-}
-
-interface Item {
-  'this is': string;
-  'name or title': string;
-  [key: string]: string;
-}
-
-export class MainContent extends Component<MainState> {
-  constructor(props: MainState) {
+export class MainContent extends Component<State> {
+  constructor(props: State) {
     super(props);
   }
 
@@ -32,7 +22,7 @@ export class MainContent extends Component<MainState> {
     });
 
     return values.map((item, index) => (
-      <div className="card" key={index}>
+      <div className="card " key={index}>
         <div>
           <span>{item[0][0]}: </span>
           <span className="cart-field">{item[0][1]}</span>
@@ -42,8 +32,8 @@ export class MainContent extends Component<MainState> {
           <span className="cart-field">{item[1][1]}</span>
         </div>
         <div>
-          <span>{item[3][0]}: </span>
-          <span className="cart-field">{item[3][1]}</span>
+          <span>{item[2][0]}: </span>
+          <span className="cart-field">{item[2][1]}</span>
         </div>
       </div>
     ));

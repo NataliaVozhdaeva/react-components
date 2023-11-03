@@ -19,6 +19,7 @@
 
 .search-bar:focus {
   border: 2px wheat solid;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .search-container {
