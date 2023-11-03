@@ -80,10 +80,7 @@ class App extends Component<Record<string, never>, State> {
   render() {
     return (
       <>
-        <Header
-          description={this.state.description}
-          callbackSearch={this.searchHandler.bind(this)}
-        />
+        <Header callbackSearch={this.searchHandler.bind(this)} />
         <MainContent
           description={this.state.description}
           isDefault={this.state.isDefault}
