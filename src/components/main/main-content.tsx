@@ -7,8 +7,11 @@ export class MainContent extends Component<State> {
     super(props);
   }
 
-  renderDefault(data: Item[]) {
+  renderDefault(data: Item) {
+    //const currentData = Array.isArray(data) ? Object.keys(data[0]) : Object.keys(data);
+    //= Array.isArray(data) ?  Object.keys(data[0]) :
     const currentData = Object.keys(data);
+    console.log(currentData);
     return currentData.map((item, index) => (
       <div className="card" key={index}>
         <span className="cart-field">{item}</span>
@@ -45,8 +48,8 @@ export class MainContent extends Component<State> {
         <h2 className="title">This site is about StarWars:</h2>
         <div className="card-container">
           {this.props.isDefault
-            ? this.renderDefault(this.props.description)
-            : this.renderTerm(this.props.description)}
+            ? this.renderDefault(this.props.description as Item)
+            : this.renderTerm(this.props.description as Item[])}
         </div>
       </main>
     );

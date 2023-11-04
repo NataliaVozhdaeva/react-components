@@ -68,11 +68,18 @@ class App extends Component<Record<string, never>, State> {
             }
             newState.push(newItem);
           }
+          this.setState({
+            isDefault: false,
+            description: newState.flat(),
+          });
+        } else {
+          const zeroFound: Item = { 'Sorry, try type something else': '' };
+          this.setState({
+            isDefault: true,
+            description: zeroFound,
+          });
+          return <div>Sorry, try type something else</div>;
         }
-        this.setState({
-          isDefault: false,
-          description: newState.flat(),
-        });
       });
     }
   }
