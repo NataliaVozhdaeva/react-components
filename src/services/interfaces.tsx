@@ -1,8 +1,3 @@
-interface State {
-  description: Item | Item[];
-  isDefault: boolean;
-}
-
 interface Item {
   [key: string]: string;
 }
@@ -23,4 +18,4 @@ interface ErrorProps {
   children?: JSX.Element;
 }
 
-export type { State, Item, HeaderProps, HeaderState, ErrorState, ErrorProps };
+export type { Item, HeaderProps, HeaderState, ErrorState, ErrorProps };

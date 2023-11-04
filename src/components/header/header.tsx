@@ -1,47 +1,39 @@
-import { Component } from 'react';
-import { HeaderProps, HeaderState } from '../../services/interfaces';
+import { useState } from 'react';
 import { ErrorBtn } from './error-btn';
-
+import { HeaderProps } from '../../services/interfaces';
 import './search-bar.css';
 import './header.css';
 
-export class Header extends Component<HeaderProps, HeaderState> {
-  constructor(props: HeaderProps) {
-    super(props);
-    this.state = {
-      term: '',
-    };
-  }
+export function Header({ callbackSearch }: HeaderProps): JSX.Element {
+  const [term, setTerm] = useState('');
 
-  handleInput = (
+  const searchHandler = () => {
+    callbackSearch(term);
+  };
+
+  const handleInput = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
-    this.setState({ term: e.target.value });
+    setTerm(e.target.value);
   };
 
-  searchHandler = () => {
-    this.props.callbackSearch(this.state.term);
-  };
-
-  render() {
-    return (
-      <header className="header">
-        <h4 className="title">Type here what you want to find</h4>
-        <div className="wrapper">
-          <div className="search-container">
-            <input
-              id="search-bar"
-              className="search-bar"
-              type="text"
-              onChange={this.handleInput}
-            />
-            <button type="button" className="btn" onClick={this.searchHandler}>
-              Search
-            </button>
-          </div>
-          <ErrorBtn />
+  return (
+    <header className="header">
+      <h4 className="title">Type here what you want to find</h4>
+      <div className="wrapper">
+        <div className="search-container">
+          <input
+            id="search-bar"
+            className="search-bar"
+            type="text"
+            onChange={handleInput}
+          />
+          <button type="button" className="btn" onClick={searchHandler}>
+            Search
+          </button>
         </div>
-      </header>
-    );
-  }
+        <ErrorBtn />
+      </div>
+    </header>
+  );
 }

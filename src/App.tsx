@@ -1,30 +1,27 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
+import ApiService from './services/api';
 import { Header } from './components/header/header';
 import { MainContent } from './components/main/main-content';
-import ApiService from './services/api';
-import { State, Item } from './services/interfaces';
+import { Item } from './services/interfaces';
 
-class App extends Component<Record<string, never>, State> {
-  apiService = new ApiService();
+export function App(): JSX.Element {
+  const [isDefault, setIsDefault] = useState(true);
+  const [description, setDescription] = useState<string[] | Item[]>([]);
 
-  state = {
-    description: [],
-    isDefault: true,
+  useEffect(() => {
+    getData('');
+  }, []);
+
+  const apiService = new ApiService();
+
+  const getData = (url: string) => {
+    apiService.getResource(url).then((body) => {
+      setDescription(body);
+      console.log(body);
+    });
   };
 
-  componentDidMount() {
-    this.getData('');
-  }
-
-  getData(url: string) {
-    this.apiService.getResource(url).then((body) => {
-      this.setState({
-        description: body,
-      });
-    });
-  }
-
-  searchHandler(term = '') {
+  const searchHandler = (term = '') => {
     const fields = [
       'people',
       'planets',
@@ -35,7 +32,7 @@ class App extends Component<Record<string, never>, State> {
     ];
     const newState: Item[] = [];
     for (const el of fields) {
-      this.apiService.search(el, term).then((body) => {
+      apiService.search(el, term).then((body) => {
         if (body.length > 0) {
           for (let i = 0; i < body.length; i++) {
             const newItem: Item = {
@@ -68,33 +65,21 @@ class App extends Component<Record<string, never>, State> {
             }
             newState.push(newItem);
           }
-          this.setState({
-            isDefault: false,
-            description: newState.flat(),
-          });
+          setIsDefault(false);
+          setDescription(newState.flat());
         } else {
-          const zeroFound: Item = { 'Sorry, try type something else': '' };
-          this.setState({
-            isDefault: true,
-            description: zeroFound,
-          });
-          return <div>Sorry, try type something else</div>;
+          const zeroFound = ['Sorry, try type something else'];
+          setIsDefault(true);
+          setDescription(zeroFound);
         }
       });
     }
-  }
+  };
 
-  render() {
-    return (
-      <>
-        <Header callbackSearch={this.searchHandler.bind(this)} />
-        <MainContent
-          description={this.state.description}
-          isDefault={this.state.isDefault}
-        />
-      </>
-    );
-  }
+  return (
+    <>
+      <Header callbackSearch={searchHandler} />
+      <MainContent description={description} isDefault={isDefault} />
+    </>
+  );
 }
-
-export default App;
