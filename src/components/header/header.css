@@ -1,0 +1,18 @@
+.header {
+  margin: 20px 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-error {
+  background-color: #560319;
+  border-color: #721422 #4f0014 #4f0014 #721422;
+}
+
+.btn-error:active {
+  background-color: #560319;
+  border-color: #4f0014 #721422 #721422 #4f0014;
+}
