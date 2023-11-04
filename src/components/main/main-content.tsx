@@ -8,10 +8,7 @@ export class MainContent extends Component<State> {
   }
 
   renderDefault(data: Item) {
-    //const currentData = Array.isArray(data) ? Object.keys(data[0]) : Object.keys(data);
-    //= Array.isArray(data) ?  Object.keys(data[0]) :
     const currentData = Object.keys(data);
-    console.log(currentData);
     return currentData.map((item, index) => (
       <div className="card" key={index}>
         <span className="cart-field">{item}</span>

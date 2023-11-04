@@ -1,19 +1,27 @@
-import { Component } from 'react';
-import { ErrorProps } from '../../services/interfaces';
+import { useState, useEffect } from 'react';
 
-export class ErrorBtn extends Component<ErrorProps> {
-  constructor(props: ErrorProps) {
-    super(props);
-    this.handleError = this.handleError.bind(this);
-  }
+function ErrorBtn(): JSX.Element {
+  const [hasError, setHasError] = useState(false);
 
-  state = {
-    hasError: false,
+  useEffect(() => {
+    if (hasError) {
+      throw new Error('ta-ta-ta-ta-ta-ta-ta-ta-taaa');
+    }
+  }, [hasError]);
+
+  const handleError = () => {
+    setHasError(true);
   };
 
-  handleError() {
-    this.setState({ hasError: true });
-  }
+  return (
+    <button className="btn btn-error" onClick={handleError}>
+      Show me an Error
+    </button>
+  );
+}
+
+export { ErrorBtn };
+/* 
 
   render() {
     if (this.state.hasError) {
@@ -25,4 +33,4 @@ export class ErrorBtn extends Component<ErrorProps> {
       </button>
     );
   }
-}
+} */
