@@ -1,22 +1,17 @@
-import { Component } from 'react';
-import { State, Item } from '../../services/interfaces';
+import { MainProps, Item } from '../../services/interfaces';
 import './main-content.css';
 
-export class MainContent extends Component<State> {
-  constructor(props: State) {
-    super(props);
-  }
-
-  renderDefault(data: Item) {
+export function MainContent(props: MainProps): JSX.Element {
+  const renderDefault = (data: Item) => {
     const currentData = Object.keys(data);
     return currentData.map((item, index) => (
       <div className="card" key={index}>
         <span className="cart-field">{item}</span>
       </div>
     ));
-  }
+  };
 
-  renderTerm(data: Item[]) {
+  const renderTerm = (data: Item[]) => {
     const values = data.map((el) => {
       return Object.entries(el);
     });
@@ -37,18 +32,16 @@ export class MainContent extends Component<State> {
         </div>
       </div>
     ));
-  }
+  };
 
-  render() {
-    return (
-      <main className="main-content">
-        <h2 className="title">This site is about StarWars:</h2>
-        <div className="card-container">
-          {this.props.isDefault
-            ? this.renderDefault(this.props.description as Item)
-            : this.renderTerm(this.props.description as Item[])}
-        </div>
-      </main>
-    );
-  }
+  return (
+    <main className="main-content">
+      <h2 className="title">This site is about StarWars:</h2>
+      <div className="card-container">
+        {props.isDefault
+          ? renderDefault(props.description as Item)
+          : renderTerm(props.description as Item[])}
+      </div>
+    </main>
+  );
 }

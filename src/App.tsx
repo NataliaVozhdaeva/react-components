@@ -6,7 +6,7 @@ import { Item } from './services/interfaces';
 
 export function App(): JSX.Element {
   const [isDefault, setIsDefault] = useState(true);
-  const [description, setDescription] = useState<string[] | Item[]>([]);
+  const [description, setDescription] = useState<Item[] | Item>([]);
 
   useEffect(() => {
     getData('');
@@ -17,7 +17,7 @@ export function App(): JSX.Element {
   const getData = (url: string) => {
     apiService.getResource(url).then((body) => {
       setDescription(body);
-      console.log(body);
+      console.log(description);
     });
   };
 
@@ -68,7 +68,7 @@ export function App(): JSX.Element {
           setIsDefault(false);
           setDescription(newState.flat());
         } else {
-          const zeroFound = ['Sorry, try type something else'];
+          const zeroFound = { ['Sorry, try type something else']: '' };
           setIsDefault(true);
           setDescription(zeroFound);
         }
