@@ -1,21 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PaginationProps } from '../../services/interfaces';
 
 const Pagination = ({ callbackPage }: PaginationProps) => {
   const [currentPage, setPage] = useState(1);
+  useEffect(() => {
+    callbackPage(currentPage);
+  }, [currentPage]);
 
   const pagePlus = () => {
-    setPage(currentPage + 1);
-    pageHandler();
+    setPage((currentPage) => currentPage + 1);
   };
 
   const pageMinus = () => {
-    setPage(currentPage - 1);
-    pageHandler();
-  };
-
-  const pageHandler = () => {
-    callbackPage(currentPage);
+    setPage((currentPage) => currentPage - 1);
   };
 
   return (

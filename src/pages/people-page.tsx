@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getPage } from '../services/api';
 import { Person } from '../services/interfaces';
 import { Pagination } from '../components/main/pagination';
 
 const PeoplePage = () => {
   const [description, setDescription] = useState<Person[]>([]);
-
-  useEffect(() => {
-    getData('people', 1);
-  }, []);
 
   const getData = (url: string, page: number) => {
     getPage(url, page).then((body) => {
@@ -19,7 +15,6 @@ const PeoplePage = () => {
 
   const pageHandler = (currentPage = 1) => {
     getData('people', currentPage);
-    console.log('handler ', currentPage);
   };
 
   const renderDefault = (data: Person[]) => {
@@ -37,7 +32,19 @@ const PeoplePage = () => {
     <div className="main-wrapper">
       <div className="main-header">
         <h2 className="title">People</h2>
-        <div className="range-wrapper">
+      </div>
+
+      <div className="card-container">{renderDefault(description)}</div>
+      <Pagination callbackPage={pageHandler}></Pagination>
+    </div>
+  );
+};
+
+export { PeoplePage };
+
+/*
+
+*<div className="range-wrapper">
           <label htmlFor="itemAmount" className="label">
             Items per page
           </label>
@@ -52,17 +59,9 @@ const PeoplePage = () => {
           />
           <span>10</span>
         </div>
-      </div>
 
-      <div className="card-container">{renderDefault(description)}</div>
-      <Pagination callbackPage={pageHandler}></Pagination>
-    </div>
-  );
-};
 
-export { PeoplePage };
 
-/**
  * const renderDetais = (data: Person[]) => {
     const values = data.map((el) => {
       return Object.entries(el);
