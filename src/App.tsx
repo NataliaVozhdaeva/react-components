@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import { getResource, search } from './services/api';
 import { Header } from './components/header/header';
-import { MainContent } from './components/main/main-content';
 import { Item } from './services/interfaces';
+import { Routes, Route } from 'react-router-dom';
+import { MainPage } from './pages/main-page';
+import { PeoplePage } from './pages/people-page';
+import { SpeciesPage } from './pages/species-page';
+import { StarshipsPage } from './pages/starships-page';
+import { NotFoundPage } from './pages/not-found';
 
 export function App(): JSX.Element {
   const [isDefault, setIsDefault] = useState(true);
@@ -76,7 +81,17 @@ export function App(): JSX.Element {
   return (
     <>
       <Header callbackSearch={searchHandler} />
-      <MainContent description={description} isDefault={isDefault} />
+
+      <Routes>
+        <Route
+          path="/"
+          element={<MainPage description={description} isDefault={isDefault} />}
+        />
+        <Route path="/people" element={<PeoplePage />} />
+        <Route path="/species" element={<SpeciesPage />} />
+        <Route path="/starships" element={<StarshipsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </>
   );
 }

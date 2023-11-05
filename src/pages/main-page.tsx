@@ -1,7 +1,7 @@
-import { MainProps, Item } from '../../services/interfaces';
-import './main-content.css';
+import { MainProps, Item } from '../services/interfaces';
+import '../components/main/main-content.css';
 
-export function MainContent(props: MainProps): JSX.Element {
+export function MainPage(props: MainProps): JSX.Element {
   const renderDefault = (data: Item) => {
     const currentData = Object.keys(data);
     return currentData.map((item, index) => (
