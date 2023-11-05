@@ -1,8 +1,8 @@
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getResource, search } from './services/api';
-import { Header } from './components/header/header';
 import { Item } from './services/interfaces';
-import { Routes, Route } from 'react-router-dom';
+import { Header } from './components/header/header';
 import { MainPage } from './pages/main-page';
 import { PeoplePage } from './pages/people-page';
 import { SpeciesPage } from './pages/species-page';

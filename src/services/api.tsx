@@ -9,7 +9,6 @@ const getResource = async (url: string | undefined) => {
   if (!res.ok) {
     throw new Error('error');
   }
-
   return res.json();
 };
 
@@ -18,4 +17,9 @@ const search = async (searchUrl: string, term: string) => {
   return res.results;
 };
 
-export { getResource, search };
+const getPage = async (searchUrl: string, page: number) => {
+  const res = await getResource(`${searchUrl}/?page=${page}`);
+  return res.results;
+};
+
+export { getResource, search, getPage };

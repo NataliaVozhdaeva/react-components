@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { MainProps, Item } from '../services/interfaces';
 import '../components/main/main-content.css';
 
@@ -5,9 +6,9 @@ export function MainPage(props: MainProps): JSX.Element {
   const renderDefault = (data: Item) => {
     const currentData = Object.keys(data);
     return currentData.map((item, index) => (
-      <a href={`/${item}`} className="card" key={index}>
+      <Link to={`/${item}`} className="card link" key={index}>
         <span className="cart-field">{item}</span>
-      </a>
+      </Link>
     ));
   };
 
@@ -37,7 +38,6 @@ export function MainPage(props: MainProps): JSX.Element {
   return (
     <main className="main-content">
       <h2 className="title">This site is about StarWars:</h2>
-
       <div className="card-container">
         {props.isDefault
           ? renderDefault(props.description as Item)
