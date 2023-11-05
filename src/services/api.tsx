@@ -1,25 +1,21 @@
 import API_PATH from './constants';
 
-export default class ApiService {
-  base: string;
+const base = API_PATH;
 
-  constructor() {
-    this.base = API_PATH;
+const getResource = async (url: string | undefined) => {
+  if (!url) url = '';
+  const res = await fetch(`${base}${url}`);
+
+  if (!res.ok) {
+    throw new Error('error');
   }
 
-  async getResource(url: string | undefined) {
-    if (!url) url = '';
-    const res = await fetch(`${this.base}${url}`);
+  return res.json();
+};
 
-    if (!res.ok) {
-      throw new Error('error');
-    }
+const search = async (searchUrl: string, term: string) => {
+  const res = await getResource(`${searchUrl}/?search=${term}`);
+  return res.results;
+};
 
-    return res.json();
-  }
-
-  async search(searchUrl: string, term: string) {
-    const res = await this.getResource(`${searchUrl}/?search=${term}`);
-    return res.results;
-  }
-}
+export { getResource, search };

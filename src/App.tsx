@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ApiService from './services/api';
+import { getResource, search } from './services/api';
 import { Header } from './components/header/header';
 import { MainContent } from './components/main/main-content';
 import { Item } from './services/interfaces';
@@ -12,12 +12,9 @@ export function App(): JSX.Element {
     getData('');
   }, []);
 
-  const apiService = new ApiService();
-
   const getData = (url: string) => {
-    apiService.getResource(url).then((body) => {
+    getResource(url).then((body) => {
       setDescription(body);
-      console.log(description);
     });
   };
 
@@ -32,7 +29,7 @@ export function App(): JSX.Element {
     ];
     const newState: Item[] = [];
     for (const el of fields) {
-      apiService.search(el, term).then((body) => {
+      search(el, term).then((body) => {
         if (body.length > 0) {
           for (let i = 0; i < body.length; i++) {
             const newItem: Item = {
