@@ -82,6 +82,15 @@ body {
 
 .main-card {
   width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-close {
+  margin-bottom: 50px;
+  width: 50px;
+  align-self: center;
 }
 
 @media (prefers-color-scheme: light) {

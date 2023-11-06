@@ -91,7 +91,6 @@ export function App(): JSX.Element {
         <Route path="/people" element={<PeoplePage />}>
           <Route path="/people/:name" element={<PeopleDetails />} />
         </Route>
-
         <Route path="/species" element={<SpeciesPage />} />
         <Route path="/starships" element={<StarshipsPage />} />
         <Route path="*" element={<NotFoundPage />} />
