@@ -5,6 +5,7 @@ import { Item } from './services/interfaces';
 import { Header } from './components/header/header';
 import { MainPage } from './pages/main-page';
 import { PeoplePage } from './pages/people-page';
+import { PeopleDetails } from './pages/people-details';
 import { SpeciesPage } from './pages/species-page';
 import { StarshipsPage } from './pages/starships-page';
 import { NotFoundPage } from './pages/not-found';
@@ -87,7 +88,10 @@ export function App(): JSX.Element {
           path="/"
           element={<MainPage description={description} isDefault={isDefault} />}
         />
-        <Route path="/people" element={<PeoplePage />} />
+        <Route path="/people" element={<PeoplePage />}>
+          <Route path="/people/:name" element={<PeopleDetails />} />
+        </Route>
+
         <Route path="/species" element={<SpeciesPage />} />
         <Route path="/starships" element={<StarshipsPage />} />
         <Route path="*" element={<NotFoundPage />} />

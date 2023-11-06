@@ -2,11 +2,16 @@
   margin: 100px 50px;
 }
 
-.card-container {
+.card-container,
+.card-container-inside {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.card-container-inside {
+  width: 50%;
 }
 
 .card {

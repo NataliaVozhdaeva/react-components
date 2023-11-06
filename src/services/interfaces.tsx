@@ -34,6 +34,14 @@ interface Person {
   birth_year: string;
 }
 
+interface OutletProps {
+  context?: unknown;
+}
+
+interface DetailsProps {
+  person: [][];
+}
+
 export type {
   Item,
   HeaderProps,
@@ -43,4 +51,6 @@ export type {
   ErrorProps,
   Person,
   PaginationProps,
+  OutletProps,
+  DetailsProps,
 };
