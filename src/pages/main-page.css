@@ -1,0 +1,35 @@
+.main-content {
+  margin: 100px 50px;
+}
+
+.card-container,
+.card-container-inside {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card-container-inside {
+  width: 50%;
+}
+
+.card {
+  width: 230px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: aliceblue;
+  font-size: 1.5rem;
+
+  border: 2px lightsteelblue solid;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.card:hover {
+  color: chartreuse;
+  cursor: pointer;
+}

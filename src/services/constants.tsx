@@ -1,3 +1,3 @@
-const API_PATH = 'https://swapi.dev/api/';
+const API_PATH = 'https://pokeapi.co/api/v2/pokemon/';
 
 export default API_PATH;

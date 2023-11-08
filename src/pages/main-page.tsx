@@ -1,48 +1,51 @@
-import { Link } from 'react-router-dom';
-import { MainProps, Item } from '../services/interfaces';
-import '../components/main/main-content.css';
+import { Outlet /* Link,  useParams */ } from 'react-router-dom';
+//import { useState } from 'react';
+//import { getPage } from '../services/api';
+import { Item } from '../services/interfaces';
+//import { Pagination } from '../components/main/pagination';
+import { ItemCard } from '../components/main/item-card';
 
-export function MainPage(props: MainProps): JSX.Element {
-  const renderDefault = (data: Item) => {
-    const currentData = Object.keys(data);
-    return currentData.map((item, index) => (
-      <Link to={`/${item}`} className="card link" key={index}>
-        <span className="cart-field">{item}</span>
-      </Link>
-    ));
-  };
+import './main-page.css';
 
-  const renderTerm = (data: Item[]) => {
-    const values = data.map((el) => {
-      return Object.entries(el);
+const MainPage = (props: Item[]) => {
+  const description = props;
+
+  // const [description, setDescription] = useState<Pokemon[]>([]);
+
+  /*   const getData = () => {
+    getPage(url, page).then((body) => {
+      setDescription(body);
     });
+  }; */
 
-    return values.map((item, index) => (
-      <div className="card " key={index}>
-        <div>
-          <span>{item[0][0]}: </span>
-          <span className="cart-field">{item[0][1]}</span>
+  /*   const pageHandler = (currentPage = 1) => {
+    getData('people', currentPage);
+  }; */
+
+  const renderDefault = (data: Item[]) => {
+    const currentData = Object.values(data);
+    //console.log(currentData)
+
+    return currentData.map((item) => {
+      return (
+        <div key={item.name} className="card">
+          <ItemCard {...item} />
         </div>
-        <div>
-          <span>{item[1][0]}: </span>
-          <span className="cart-field">{item[1][1]}</span>
-        </div>
-        <div>
-          <span>{item[2][0]}: </span>
-          <span className="cart-field">{item[2][1]}</span>
-        </div>
-      </div>
-    ));
+      );
+    });
   };
 
   return (
-    <main className="main-content">
-      <h2 className="title">This site is about StarWars:</h2>
-      <div className="card-container">
-        {props.isDefault
-          ? renderDefault(props.description as Item)
-          : renderTerm(props.description as Item[])}
+    <div className="main-wrapper">
+      <div className="wrapper-outlet">
+        <div className="card-container-inside">
+          {renderDefault(description)}
+        </div>
+        <Outlet />
       </div>
-    </main>
+      {/* <Pagination callbackPage={pageHandler}></Pagination> */}
+    </div>
   );
-}
+};
+
+export { MainPage };

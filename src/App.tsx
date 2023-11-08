@@ -1,30 +1,31 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getResource, search } from './services/api';
+import { getResource } from './services/api';
 import { Item } from './services/interfaces';
-import { Header } from './components/header/header';
+//import { Header } from './components/header/header';
+//import { MainPage } from './pages/main-page';
 import { MainPage } from './pages/main-page';
-import { PeoplePage } from './pages/people-page';
-import { PeopleDetails } from './pages/people-details';
-import { SpeciesPage } from './pages/species-page';
-import { StarshipsPage } from './pages/starships-page';
+//import { PeopleDetails } from './pages/people-details';
 import { NotFoundPage } from './pages/not-found';
 
 export function App(): JSX.Element {
-  const [isDefault, setIsDefault] = useState(true);
-  const [description, setDescription] = useState<Item[] | Item>([]);
+  //const [isDefault, setIsDefault] = useState(true);
+  const [description, setDescription] = useState<Item[]>([]);
+  //const [isDetaied] = useState(false)
 
   useEffect(() => {
-    getData('');
+    getData();
   }, []);
 
-  const getData = (url: string) => {
-    getResource(url).then((body) => {
-      setDescription(body);
+  const getData = () => {
+    getResource().then((body) => {
+      setDescription(body.results);
+
+      //console.log(description)
     });
   };
 
-  const searchHandler = (term = '') => {
+  /* const searchHandler = (term = '') => {
     const fields = [
       'people',
       'planets',
@@ -77,22 +78,17 @@ export function App(): JSX.Element {
         }
       });
     }
-  };
+  }; */
 
   return (
     <>
-      <Header callbackSearch={searchHandler} />
+      {/* <Header callbackSearch={searchHandler} /> */}
 
       <Routes>
-        <Route
-          path="/"
-          element={<MainPage description={description} isDefault={isDefault} />}
-        />
-        <Route path="/people" element={<PeoplePage />}>
+        <Route path="/" element={<MainPage {...description} />} />
+        {/*    <Route path="/" element={<MainPage />}>
           <Route path="/people/:name" element={<PeopleDetails />} />
-        </Route>
-        <Route path="/species" element={<SpeciesPage />} />
-        <Route path="/starships" element={<StarshipsPage />} />
+        </Route> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

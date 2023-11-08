@@ -1,12 +1,13 @@
-interface Item {
-  [key: string]: string;
+/* interface Item {
+  name: string,
+  url: string
 }
-
-interface MainProps {
-  description: Item | Item[];
+ */
+/*   interface MainProps {
+description: Item | Item[];
   isDefault: boolean;
 }
-
+ */
 interface HeaderProps {
   callbackSearch: (search: string) => void;
 }
@@ -27,12 +28,14 @@ interface ErrorProps {
   children?: JSX.Element;
 }
 
-interface Person {
+interface Item {
   name: string;
+  url: string;
+} /* 
   height: string;
   mass: string;
-  birth_year: string;
-}
+  birth_year: string; 
+}*/
 
 interface OutletProps {
   context?: unknown;
@@ -42,14 +45,20 @@ interface DetailsProps {
   person: [][];
 }
 
+interface Pokemon {
+  name: string;
+  img: string;
+  abilities?: [];
+}
+
 export type {
   Item,
   HeaderProps,
   HeaderState,
-  MainProps,
+  //MainProps,
   ErrorState,
   ErrorProps,
-  Person,
+  Pokemon,
   PaginationProps,
   OutletProps,
   DetailsProps,
