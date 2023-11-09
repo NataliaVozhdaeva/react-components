@@ -1,17 +1,8 @@
-/*import {  useEffect,  useState } from 'react';*/
 import /* getDetails */ '../../services/api';
-import { /* Pokemon */ CardProps } from '../../services/interfaces';
+import { /* Pokemon, */ CardProps } from '../../services/interfaces';
 
 const ItemCard = ({ item }: CardProps) => {
-  /*   const [details, setDetails] = useState<Pokemon>({
-    name: '',
-    img: '',
-    abilities: [],
-  }); */
-  /*  */
-  /*  const updateHandler = () => {
-    callbackUpdate(details)
-  } */
+  //const [clicked, setCliked] =  useState(false)
 
   const pokemonName = item.name;
   //const linkForDetails = item.url;

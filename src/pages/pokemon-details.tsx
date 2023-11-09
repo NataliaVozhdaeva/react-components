@@ -23,7 +23,7 @@ const PokemonDetails = () => {
     return (
       <div className="card main-card">
         <span>{data.name.toLocaleUpperCase()}</span>
-        <img src={data.img} />
+        <img src={data.img} width={300} />
         {/* <span>{data.abilities}</span>  */}
       </div>
     );

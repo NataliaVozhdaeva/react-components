@@ -1,6 +1,6 @@
 import { Outlet, Link /*,  useParams */ } from 'react-router-dom';
 //import { getDetails } from '../services/api';
-import { useState /* , useEffect */ } from 'react';
+import { useState, useLayoutEffect } from 'react';
 //import { getPage } from '../services/api';
 import { Item, Pokemon } from '../services/interfaces';
 //import { Pagination } from '../components/main/pagination';
@@ -17,22 +17,17 @@ const MainPage = (props: Item[]) => {
     abilities: [],
   });
 
-  //const items = Object.values(props);
-
-  /*  useEffect(() => {
-      getDataDetails();
-  }, []);  */
+  useLayoutEffect(() => {
+    console.log('useEffect ', details);
+  }, [details]);
 
   const getDataDetails = (value: string) => {
     getDetails(value).then((body) => {
-      //console.log('base ', details)
-
       setDetails({
         name: body.name,
         img: body.sprites.other.dream_world.front_default,
         abilities: body.abilities,
       });
-      //console.log('details ', details)
     });
   };
 
@@ -42,12 +37,13 @@ const MainPage = (props: Item[]) => {
     return currentData.map((item) => {
       return (
         <Link
+          className="link"
           to={item.name}
           key={item.name}
           onClick={() => getDataDetails(item.url)}
           state={{ pokemon: details }}
         >
-          <ItemCard item={item} /* callbackUpdate={updateHandler}   */ />
+          <ItemCard item={item} />
         </Link>
       );
     });

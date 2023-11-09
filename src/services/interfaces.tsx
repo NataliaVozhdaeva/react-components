@@ -29,7 +29,7 @@ interface Item {
 
 interface CardProps {
   item: Item;
-  callbackUpdate?: (pokemon: Pokemon) => void;
+  callbackUpdate?: (name: string) => void;
 }
 
 interface OutletProps {
