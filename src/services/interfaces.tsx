@@ -10,6 +10,11 @@ interface CallbackUpdate {
   callbackUpdate: (pokemon: Pokemon) => void;
 }
 
+interface MainProps {
+  description: Item[];
+  limit: number;
+}
+
 interface HeaderState {
   term: string;
 }
@@ -53,4 +58,5 @@ export type {
   OutletProps,
   CardProps,
   CallbackUpdate,
+  MainProps,
 };

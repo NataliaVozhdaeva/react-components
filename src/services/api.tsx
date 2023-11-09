@@ -30,10 +30,9 @@ const search = async (term: string) => {
   return res.json();
 };
 
-/*
-const getPage = async (searchUrl: string, page: number) => {
-  const res = await getResource(`${searchUrl}/?page=${page}`);
+const getPage = async (limit: number) => {
+  const res = await getResource(`?limit=${limit}&offset=${limit + limit}`);
   return res.results;
-}; */
+};
 
-export { getResource, getDetails, search /*getPage */ };
+export { getResource, getDetails, search, getPage };

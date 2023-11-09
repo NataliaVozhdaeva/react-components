@@ -1,11 +1,9 @@
-import { Outlet, Link /*,  useParams */ } from 'react-router-dom';
-//import { getDetails } from '../services/api';
-import { useState, useLayoutEffect } from 'react';
-//import { getPage } from '../services/api';
+import { Outlet, Link } from 'react-router-dom';
+import { useState } from 'react';
 import { Item, Pokemon } from '../services/interfaces';
 //import { Pagination } from '../components/main/pagination';
 import { ItemCard } from '../components/main/item-card';
-import { getDetails } from '../services/api';
+import { getDetails /* getPage  */ } from '../services/api';
 
 import './main-page.css';
 
@@ -16,10 +14,12 @@ const MainPage = (props: Item[]) => {
     img: '',
     abilities: [],
   });
-
-  useLayoutEffect(() => {
-    console.log('useEffect ', details);
-  }, [details]);
+  /*const [data, setData] = useState<MainProps>({description: description, limit: 20})
+  
+  useEffect(() => {
+  //  console.log('useEffect ', details);
+   
+  }, [details]);*/
 
   const getDataDetails = (value: string) => {
     getDetails(value).then((body) => {
@@ -30,6 +30,21 @@ const MainPage = (props: Item[]) => {
       });
     });
   };
+
+  /* const getData = (page: number) => {
+  const limit = data.limit*page
+
+    getPage(limit).then((body) => {
+      //setDescription(body);
+      console.log(body.splice(-20));
+      const newData = body.splice(-20)
+      setData({description: newData, limit: limit})
+    }).then(()=> renderDefault(data.description));
+  };
+
+  const pageHandler = (page: number) => {
+    getData(page);
+  }; */
 
   const renderDefault = (data: Item[]) => {
     const currentData = Object.values(data);
@@ -53,31 +68,14 @@ const MainPage = (props: Item[]) => {
     <div className="main-wrapper">
       <div className="wrapper-outlet">
         <div className="card-container">{renderDefault(description)}</div>
-        <Outlet />
+        <Outlet context={{ pokemon: details }} />
       </div>
-      {/* <Pagination callbackPage={pageHandler}></Pagination> */}
+      {/*  <Pagination callbackPage={pageHandler}></Pagination> */}
     </div>
   );
 };
 
 export { MainPage };
-
-/*   const updateHandler = (value = details) => {
-   //console.log('main value ', value)
-    setDetails(details);
-  } */
-
-// const [description, setDescription] = useState<Pokemon[]>([]);
-
-/*   const getData = () => {
-    getPage(url, page).then((body) => {
-      setDescription(body);
-    });
-  }; */
-
-/*   const pageHandler = (currentPage = 1) => {
-    getData('people', currentPage);
-  }; */
 
 /*<div className="range-wrapper">
 <label htmlFor="itemAmount" className="label">

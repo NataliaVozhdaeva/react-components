@@ -35,10 +35,11 @@
   overflow: hidden;
 }
 
-.link:hover {
+.link :hover {
   color: chartreuse;
-  background-color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .main-card {
@@ -55,7 +56,13 @@
 }
 
 .btn-close {
+  background-color: chartreuse;
+  color: #0e294b;
   margin-bottom: 50px;
   width: 50px;
   align-self: center;
+}
+
+.btn-close:hover {
+  color: #0e294b;
 }
