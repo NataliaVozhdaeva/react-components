@@ -1,18 +1,40 @@
-//import { useLocation, useNavigate } from 'react-router-dom';
+//import { useLocation,  useNavigate  } from 'react-router-dom';
 //import { DetailsProps } from '../services/interfaces';
+//import { useState } from 'react';
+import { useLocation /* , useNavigate */ } from 'react-router-dom';
+import { Pokemon } from '../services/interfaces';
+//import { getDetails } from '../services/api';
 
 const PokemonDetails = () => {
-  //const location = useLocation();
-  //const person = location.state;
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const pokemon = location.state.pokemon;
+  /*const [pokemon, setPokemon] = useState<Pokemon>({
+    name: '',
+    img: '',
+    abilities: [],
+  }); */
 
-  const renderDetais = (/* data: DetailsProps */) => {
-    // const item = Object.values(data).flat();
+  //console.log('pokemon ', pokemon)
+  //const navigate = useNavigate();
+  //console.log(pokemon)
+
+  const renderDetais = (data: Pokemon) => {
+    console.log('data ', data.name);
     return (
       <div className="card main-card">
-        {' '}
-        lber;vsgjbaverjb
-        {/*  <button className="btn btn-close" onClick={() => (console.log('close'))}>
+        <span>{data.name.toLocaleUpperCase()}</span>
+        <img src={data.img} />
+        {/* <span>{data.abilities}</span>  */}
+      </div>
+    );
+  };
+
+  return <div className="card-container-inside">{renderDetais(pokemon)}</div>;
+};
+
+export { PokemonDetails };
+
+/*  <button className="btn btn-close" onClick={() => (console.log('close'))}>
           X
         </button>
         <div>
@@ -30,12 +52,4 @@ const PokemonDetails = () => {
         <div>
           <span>{item[6][0]}: </span>
           <span className="cart-field">{item[6][1]}</span>
-        </div> */}
-      </div>
-    );
-  };
-
-  return <div className="card-container-inside">{renderDetais()}</div>;
-};
-
-export { PokemonDetails };
+        </div> */

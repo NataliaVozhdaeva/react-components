@@ -20,7 +20,7 @@
 
 .card {
   width: 230px;
-  max-height: 100px;
+  height: 100px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -43,10 +43,13 @@
 
 .main-card {
   width: 100%;
+  height: auto;
   padding: 50px;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
   background-color: rgba(0, 0, 0, 0.7);
 }
 

@@ -6,6 +6,10 @@ interface PaginationProps {
   callbackPage: (search: number) => void;
 }
 
+interface CallbackUpdate {
+  callbackUpdate: (pokemon: Pokemon) => void;
+}
+
 interface HeaderState {
   term: string;
 }
@@ -23,19 +27,20 @@ interface Item {
   url: string;
 }
 
+interface CardProps {
+  item: Item;
+  callbackUpdate?: (pokemon: Pokemon) => void;
+}
+
 interface OutletProps {
   context?: unknown;
 }
 
-interface DetailsProps {
-  person: [][];
-}
-
-interface Pokemon {
+type Pokemon = {
   name: string;
   img: string;
   abilities?: [];
-}
+};
 
 export type {
   Item,
@@ -46,5 +51,6 @@ export type {
   Pokemon,
   PaginationProps,
   OutletProps,
-  DetailsProps,
+  CardProps,
+  CallbackUpdate,
 };

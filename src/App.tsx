@@ -40,7 +40,6 @@ export function App(): JSX.Element {
       <Header callbackSearch={searchHandler} />
 
       <Routes>
-        {/*  <Route path="/" element={<MainPage {...description} />} /> */}
         <Route path="/" element={<MainPage {...description} />}>
           <Route path="/:name" element={<PokemonDetails />} />
         </Route>
