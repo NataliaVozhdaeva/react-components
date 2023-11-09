@@ -21,10 +21,6 @@ body {
   text-decoration: none;
 }
 
-.link:hover {
-  color: wheat;
-}
-
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -78,19 +74,6 @@ body {
 .wrapper-outlet {
   display: flex;
   justify-content: space-between;
-}
-
-.main-card {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.btn-close {
-  margin-bottom: 50px;
-  width: 50px;
-  align-self: center;
 }
 
 @media (prefers-color-scheme: light) {

@@ -7,7 +7,11 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+}
+
+.card-container {
+  max-width: 50%;
 }
 
 .card-container-inside {
@@ -16,6 +20,7 @@
 
 .card {
   width: 230px;
+  max-height: 100px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -26,10 +31,27 @@
 
   border: 2px lightsteelblue solid;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
-.card:hover {
+.link:hover {
   color: chartreuse;
+  background-color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
+}
+
+.main-card {
+  width: 100%;
+  padding: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.btn-close {
+  margin-bottom: 50px;
+  width: 50px;
+  align-self: center;
 }

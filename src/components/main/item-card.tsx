@@ -9,6 +9,7 @@ const ItemCard = (pokemon: Item) => {
   const [details, setDetails] = useState<Pokemon>({
     name: '',
     img: '',
+    abilities: [],
   });
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const ItemCard = (pokemon: Item) => {
       setDetails({
         name: body.name,
         img: body.sprites.other.dream_world.front_default,
+        abilities: body.abilities,
       });
     });
   };

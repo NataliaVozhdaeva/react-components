@@ -1,13 +1,3 @@
-/* interface Item {
-  name: string,
-  url: string
-}
- */
-/*   interface MainProps {
-description: Item | Item[];
-  isDefault: boolean;
-}
- */
 interface HeaderProps {
   callbackSearch: (search: string) => void;
 }
@@ -31,11 +21,7 @@ interface ErrorProps {
 interface Item {
   name: string;
   url: string;
-} /* 
-  height: string;
-  mass: string;
-  birth_year: string; 
-}*/
+}
 
 interface OutletProps {
   context?: unknown;
@@ -55,7 +41,6 @@ export type {
   Item,
   HeaderProps,
   HeaderState,
-  //MainProps,
   ErrorState,
   ErrorProps,
   Pokemon,

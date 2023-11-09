@@ -18,7 +18,7 @@
 }
 
 .search-bar:focus {
-  border: 2px wheat solid;
+  border: 2px solid chartreuse;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -42,7 +42,7 @@
 }
 
 .btn:hover {
-  color: wheat;
+  color: chartreuse;
   cursor: pointer;
 }
 

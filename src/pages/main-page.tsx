@@ -1,5 +1,6 @@
-import { Outlet /* Link,  useParams */ } from 'react-router-dom';
-//import { useState } from 'react';
+import { Outlet, Link /*,  useParams */ } from 'react-router-dom';
+//import { getDetails } from '../services/api';
+//import { useEffect, useState } from 'react';
 //import { getPage } from '../services/api';
 import { Item } from '../services/interfaces';
 //import { Pagination } from '../components/main/pagination';
@@ -24,13 +25,11 @@ const MainPage = (props: Item[]) => {
 
   const renderDefault = (data: Item[]) => {
     const currentData = Object.values(data);
-    //console.log(currentData)
-
     return currentData.map((item) => {
       return (
-        <div key={item.name} className="card">
+        <Link to={item.name} key={item.name} className="card link">
           <ItemCard {...item} />
-        </div>
+        </Link>
       );
     });
   };
@@ -38,9 +37,7 @@ const MainPage = (props: Item[]) => {
   return (
     <div className="main-wrapper">
       <div className="wrapper-outlet">
-        <div className="card-container-inside">
-          {renderDefault(description)}
-        </div>
+        <div className="card-container">{renderDefault(description)}</div>
         <Outlet />
       </div>
       {/* <Pagination callbackPage={pageHandler}></Pagination> */}
