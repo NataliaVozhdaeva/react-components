@@ -4,9 +4,6 @@ import { Pokemon, Abilities } from '../services/interfaces';
 const PokemonDetails = () => {
   const { pokemon } = useOutletContext<{ pokemon: Pokemon }>();
   const abilities: Abilities[] = pokemon.abilities;
-  //pokemon.abilities.forEach((el) => abilities.push(el))
-
-  //console.log(abilities[0].ability.name)
   const renderDetais = (data: Pokemon) => {
     return (
       <div className="card main-card">

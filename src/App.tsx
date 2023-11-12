@@ -9,9 +9,7 @@ import { NotFoundPage } from './pages/not-found';
 import { PokemonlistContext } from './context/app-context';
 
 export function App(): JSX.Element {
-  //const [isDefault, setIsDefault] = useState(true);
   const [description, setDescription] = useState<Item[]>([]);
-  //const [isDetaied] = useState(false)
 
   useEffect(() => {
     getData();

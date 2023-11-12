@@ -51,7 +51,6 @@
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
-
   gap: 50px;
   background-color: rgba(0, 0, 0, 0.7);
 }
