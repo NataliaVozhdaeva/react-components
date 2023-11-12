@@ -1,12 +1,11 @@
 import { Outlet, Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import PokemonlistContext from '../context/app-context';
 import { Item, Pokemon } from '../services/interfaces';
 //import { Pagination } from '../components/main/pagination';
 import { ItemCard } from '../components/main/item-card';
 import { getDetails /* getPage  */ } from '../services/api';
-
 import './main-page.css';
+import { PokemonlistContext } from '../context/app-context';
 
 const MainPage = () => {
   const ctx = useContext(PokemonlistContext);
@@ -77,6 +76,46 @@ const MainPage = () => {
 };
 
 export { MainPage };
+
+/* const getData = (page: number) => {
+  const limit = data.limit*page
+
+    getPage(limit).then((body) => {
+      //setDescription(body);
+      console.log(body.splice(-20));
+      const newData = body.splice(-20)
+      setData({description: newData, limit: limit})
+    }).then(()=> renderDefault(data.description));
+  };
+
+  const pageHandler = (page: number) => {
+    getData(page);
+  }; */
+
+/*const [data, setData] = useState<MainProps>({description: description, limit: 20})
+  
+  useEffect(() => {
+  //  console.log('useEffect ', details);
+   
+  }, [details]);*/
+
+/* 
+  const renderDefault = (data: Item[]) => {
+    const currentData = Object.values(data);
+    //console.log('details ', details)
+    return currentData.map((item) => {
+      return (
+        <Link
+          className="link"
+          to={item.name}
+          key={item.name}
+          onClick={() => getDataDetails(item.url)}
+        >
+          <ItemCard context={{ pokemon: details }} />
+        </Link>
+      );
+    });
+  }; */
 
 /*<div className="range-wrapper">
 <label htmlFor="itemAmount" className="label">

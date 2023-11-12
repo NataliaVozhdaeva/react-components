@@ -6,10 +6,6 @@ interface PaginationProps {
   callbackPage: (search: number) => void;
 }
 
-interface CallbackUpdate {
-  callbackUpdate: (pokemon: Pokemon) => void;
-}
-
 interface MainProps {
   description: Item[];
   limit: number;
@@ -44,7 +40,11 @@ interface OutletProps {
 type Pokemon = {
   name: string;
   img: string;
-  abilities?: [];
+  abilities: [];
+};
+
+type Abilities = {
+  ability: { name: string; url: string };
 };
 
 export type {
@@ -57,6 +57,6 @@ export type {
   PaginationProps,
   OutletProps,
   CardProps,
-  CallbackUpdate,
   MainProps,
+  Abilities,
 };

@@ -6,7 +6,7 @@ import { Header } from './components/header/header';
 import { MainPage } from './pages/main-page';
 import { PokemonDetails } from './pages/pokemon-details';
 import { NotFoundPage } from './pages/not-found';
-import PokemonlistContext from './context/app-context';
+import { PokemonlistContext } from './context/app-context';
 
 export function App(): JSX.Element {
   //const [isDefault, setIsDefault] = useState(true);
@@ -38,6 +38,7 @@ export function App(): JSX.Element {
   return (
     <PokemonlistContext.Provider value={description}>
       <Header callbackSearch={searchHandler} />
+
       <Routes>
         <Route path="/" element={<MainPage />}>
           <Route path="/:name" element={<PokemonDetails />} />

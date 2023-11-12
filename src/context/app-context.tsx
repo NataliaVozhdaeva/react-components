@@ -7,4 +7,4 @@ const PokemonlistContext = React.createContext([
   },
 ]);
 
-export default PokemonlistContext;
+export { PokemonlistContext };
