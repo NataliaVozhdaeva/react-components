@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import { getResource, search } from './services/api';
 import { Item } from './services/interfaces';
 import { Header } from './components/header/header';
-//import { MainPage } from './pages/main-page';
 import { MainPage } from './pages/main-page';
 import { PokemonDetails } from './pages/pokemon-details';
 import { NotFoundPage } from './pages/not-found';
+import PokemonlistContext from './context/app-context';
 
 export function App(): JSX.Element {
   //const [isDefault, setIsDefault] = useState(true);
@@ -36,15 +36,14 @@ export function App(): JSX.Element {
   };
 
   return (
-    <>
+    <PokemonlistContext.Provider value={description}>
       <Header callbackSearch={searchHandler} />
-
       <Routes>
-        <Route path="/" element={<MainPage {...description} />}>
+        <Route path="/" element={<MainPage />}>
           <Route path="/:name" element={<PokemonDetails />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </>
+    </PokemonlistContext.Provider>
   );
 }

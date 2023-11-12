@@ -1,5 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import PokemonlistContext from '../context/app-context';
 import { Item, Pokemon } from '../services/interfaces';
 //import { Pagination } from '../components/main/pagination';
 import { ItemCard } from '../components/main/item-card';
@@ -7,8 +8,8 @@ import { getDetails /* getPage  */ } from '../services/api';
 
 import './main-page.css';
 
-const MainPage = (props: Item[]) => {
-  const description = props;
+const MainPage = () => {
+  const ctx = useContext(PokemonlistContext);
   const [details, setDetails] = useState<Pokemon>({
     name: '',
     img: '',
@@ -67,7 +68,7 @@ const MainPage = (props: Item[]) => {
   return (
     <div className="main-wrapper">
       <div className="wrapper-outlet">
-        <div className="card-container">{renderDefault(description)}</div>
+        <div className="card-container">{renderDefault(ctx)}</div>
         <Outlet context={{ pokemon: details }} />
       </div>
       {/*  <Pagination callbackPage={pageHandler}></Pagination> */}
