@@ -4,7 +4,7 @@ import './pagination.css';
 
 const Pagination = ({ callbackPage }: PaginationProps) => {
   const [currentPage, setPage] = useState(1);
-  const [limit] = useState(20);
+  const [limit, setLimit] = useState(20);
 
   useEffect(() => {
     callbackPage(currentPage, limit);
@@ -16,6 +16,10 @@ const Pagination = ({ callbackPage }: PaginationProps) => {
 
   const pageMinus = () => {
     setPage((currentPage) => currentPage - 1);
+  };
+
+  const getLimit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLimit(Number(e.target.value));
   };
 
   return (
@@ -41,6 +45,7 @@ const Pagination = ({ callbackPage }: PaginationProps) => {
           min="5"
           max="20"
           className="range"
+          onChange={getLimit}
         />
         <span>20</span>
       </div>
