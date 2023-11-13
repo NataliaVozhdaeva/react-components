@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.page-number {
+  height: 100%;
+  padding: 0 30px;
+  font-size: 20px;
+  color: wheat;
+  background-color: rgb(0, 0, 0);
+}
+
+.page-contaner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.range-wrapper {
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  color: aliceblue;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.label {
+  flex-grow: 1;
+}

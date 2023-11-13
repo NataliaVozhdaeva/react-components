@@ -44,21 +44,6 @@ const MainPage = () => {
 
   return (
     <div className="main-wrapper">
-      <div className="range-wrapper">
-        <label htmlFor="itemAmount" className="label">
-          Items per page
-        </label>
-        <span>6</span>
-        <input
-          id="itemAmount"
-          type="range"
-          step="2"
-          min="6"
-          max="20"
-          className="range"
-        />
-        <span>20</span>
-      </div>
       <div className="wrapper-outlet">
         <div className="card-container">{renderDefault(ctxList)}</div>
         <Outlet context={{ pokemon: details }} />

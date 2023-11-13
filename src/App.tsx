@@ -7,18 +7,24 @@ import { MainPage } from './pages/main-page';
 import { PokemonDetails } from './pages/pokemon-details';
 import { NotFoundPage } from './pages/not-found';
 import { PokemonlistContext } from './context/app-context';
+import { Pagination } from './components/main/pagination';
 
 export function App(): JSX.Element {
   const [description, setDescription] = useState<Item[]>([]);
 
   useEffect(() => {
-    getData();
+    getData('');
   }, []);
 
-  const getData = () => {
-    getResource('').then((body) => {
+  const getData = (link: string | undefined) => {
+    const addUrl = link ? link : '';
+    getResource(addUrl).then((body) => {
       setDescription(body.results);
     });
+  };
+
+  const pageHandler = (currentPage = 1, limit = 20) => {
+    getData(`?limit=${limit}&offset=${limit * currentPage - limit}`);
   };
 
   const searchHandler = (term = '') => {
@@ -43,6 +49,7 @@ export function App(): JSX.Element {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Pagination callbackPage={pageHandler} />
     </PokemonlistContext.Provider>
   );
 }

@@ -3,7 +3,7 @@ interface HeaderProps {
 }
 
 interface PaginationProps {
-  callbackPage: (search: number) => void;
+  callbackPage: (pageNumber: number, limit: number) => void;
 }
 
 interface MainProps {

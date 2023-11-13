@@ -31,43 +31,12 @@ body {
   color: wheat;
 }
 
-.range-wrapper {
-  box-sizing: border-box;
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 20px;
-  margin-bottom: 30px;
-  color: chartreuse;
-  font-weight: 700;
-}
-
-.label {
-  flex-grow: 1;
-}
-
 .main-wrapper {
   margin-top: 50px;
 }
 
 .page-prev {
   transform: rotate(180deg);
-}
-
-.page-number {
-  height: 100%;
-  padding: 0 30px;
-  font-size: 20px;
-  color: wheat;
-  background-color: rgb(0, 0, 0);
-}
-
-.page-contaner {
-  margin-top: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .wrapper-outlet {
