@@ -1,4 +1,4 @@
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Link } from 'react-router-dom';
 import { Pokemon, Abilities } from '../services/interfaces';
 
 const PokemonDetails = () => {
@@ -8,9 +8,9 @@ const PokemonDetails = () => {
   const renderDetais = (data: Pokemon) => {
     return (
       <div className="card main-card">
-        <button className="btn btn-close" onClick={() => console.log('close')}>
-          X
-        </button>
+        <Link to="/">
+          <button className="btn btn-close">X</button>
+        </Link>
         <span>{data.name.toLocaleUpperCase()}</span>
         <img src={data.img} width={300} />
         <div className="abilities">
