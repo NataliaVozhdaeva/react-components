@@ -30,6 +30,7 @@ interface Item {
 
 interface CardProps {
   item: Item;
+
   callbackUpdate?: (name: string) => void;
 }
 

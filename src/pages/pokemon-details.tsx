@@ -4,6 +4,7 @@ import { Pokemon, Abilities } from '../services/interfaces';
 const PokemonDetails = () => {
   const { pokemon } = useOutletContext<{ pokemon: Pokemon }>();
   const abilities: Abilities[] = pokemon.abilities;
+
   const renderDetais = (data: Pokemon) => {
     return (
       <div className="card main-card">

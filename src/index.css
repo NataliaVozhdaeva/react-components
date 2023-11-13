@@ -33,17 +33,14 @@ body {
 
 .range-wrapper {
   box-sizing: border-box;
-  display: flex;
+  display: inline-flex;
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
-
+  margin-bottom: 30px;
+  color: chartreuse;
   font-weight: 700;
-
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 2px lightsteelblue solid;
-  border-radius: 20px;
 }
 
 .label {

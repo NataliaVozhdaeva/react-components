@@ -3,11 +3,13 @@ import { useState, useContext } from 'react';
 import { Item, Pokemon } from '../services/interfaces';
 import { ItemCard } from '../components/main/item-card';
 import { getDetails } from '../services/api';
-import './main-page.css';
 import { PokemonlistContext } from '../context/app-context';
 
+import './main-page.css';
+
 const MainPage = () => {
-  const ctx = useContext(PokemonlistContext);
+  const ctxList = useContext(PokemonlistContext);
+
   const [details, setDetails] = useState<Pokemon>({
     name: '',
     img: '',
@@ -33,7 +35,6 @@ const MainPage = () => {
           to={item.name}
           key={item.name}
           onClick={() => getDataDetails(item.url)}
-          state={{ pokemon: details }}
         >
           <ItemCard item={item} />
         </Link>
@@ -43,8 +44,23 @@ const MainPage = () => {
 
   return (
     <div className="main-wrapper">
+      <div className="range-wrapper">
+        <label htmlFor="itemAmount" className="label">
+          Items per page
+        </label>
+        <span>6</span>
+        <input
+          id="itemAmount"
+          type="range"
+          step="2"
+          min="6"
+          max="20"
+          className="range"
+        />
+        <span>20</span>
+      </div>
       <div className="wrapper-outlet">
-        <div className="card-container">{renderDefault(ctx)}</div>
+        <div className="card-container">{renderDefault(ctxList)}</div>
         <Outlet context={{ pokemon: details }} />
       </div>
     </div>
