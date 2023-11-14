@@ -15,6 +15,7 @@ export function Header({ callbackSearch }: HeaderProps): JSX.Element {
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
     setTerm(e.target.value);
+    localStorage.setItem('term', e.target.value);
   };
 
   return (
@@ -27,6 +28,7 @@ export function Header({ callbackSearch }: HeaderProps): JSX.Element {
             className="search-bar"
             type="text"
             onChange={handleInput}
+            data-testid="search-input"
           />
           <button type="button" className="btn" onClick={searchHandler}>
             Search
