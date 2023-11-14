@@ -8,7 +8,7 @@ const mockItem = {
   url: 'https://pokeapi.co/api/v2/pokemon/1/',
 };
 const mockDetails = {
-  name: '',
+  name: 'bulbasaur',
   img: '',
   abilities: [],
 };
@@ -37,7 +37,6 @@ describe('Card component', () => {
     fireEvent.click(cardElement);
 
     const expectedURL = `/${mockItem.name}`;
-    console.dir(window.location.pathname);
     expect(window.location.pathname).toBe(expectedURL);
   });
 });
