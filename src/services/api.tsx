@@ -14,7 +14,6 @@ const getResource = async (url: string | undefined) => {
 
 const getDetails = async (url: string) => {
   const res = await fetch(url);
-  console.log('url ', url);
   if (!res.ok) {
     throw new Error('We havent got any details');
   }
