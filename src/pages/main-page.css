@@ -37,11 +37,14 @@
   overflow: hidden;
 }
 
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .link :hover {
   color: chartreuse;
   cursor: pointer;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .main-card {

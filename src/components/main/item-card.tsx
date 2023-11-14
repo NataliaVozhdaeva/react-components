@@ -25,7 +25,7 @@ const ItemCard = ({ item }: CardProps) => {
   };
 
   return (
-    <div className="card">
+    <div className="card" data-testid="card-element">
       <span className="name">{pokemonName}</span>
       <img className="view" src={details.img} width="100" />
     </div>
