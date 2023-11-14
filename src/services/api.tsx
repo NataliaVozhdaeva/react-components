@@ -25,7 +25,7 @@ const search = async (term: string) => {
   const res = await fetch(`${base}${term}`);
 
   if (!res.ok) {
-    throw new Error('We havent got this pokemon');
+    throw new Error("we haven't got this pokemon");
   }
   return res.json();
 };

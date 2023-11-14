@@ -29,14 +29,24 @@ export function App(): JSX.Element {
 
   const searchHandler = (term = '') => {
     if (!term) throw new Error('type the name');
-    search(term).then((body) => {
-      setDescription([
-        {
-          name: body.name,
-          url: `https://pokeapi.co/api/v2/pokemon/${term}`,
-        },
-      ]);
-    });
+    search(term)
+      .then((body) => {
+        setDescription([
+          {
+            name: body.name,
+            url: `https://pokeapi.co/api/v2/pokemon/${term}`,
+          },
+        ]);
+      })
+      .catch((error) => {
+        setDescription([
+          {
+            name: 'Sorry, ' + error.message,
+            url: `https://pokeapi.co/api/v2/pokemon/*`,
+          },
+        ]);
+        console.log('error ', error);
+      });
   };
 
   return (

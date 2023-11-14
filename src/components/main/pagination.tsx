@@ -37,7 +37,6 @@ const Pagination = ({ callbackPage }: PaginationProps) => {
         <label htmlFor="itemAmount" className="label">
           Items per page
         </label>
-        <span>5</span>
         <input
           id="itemAmount"
           type="range"
@@ -47,7 +46,7 @@ const Pagination = ({ callbackPage }: PaginationProps) => {
           className="range"
           onChange={getLimit}
         />
-        <span>20</span>
+        <span>{limit}</span>
       </div>
     </div>
   );
