@@ -27,7 +27,7 @@ export function App(): JSX.Element {
     getData(`?limit=${limit}&offset=${limit * currentPage - limit}`);
   };
 
-  const searchHandler = (term = '') => {
+  const searchHandler = (term = localStorage.getItem('term')) => {
     if (!term) throw new Error('type the name');
     search(term)
       .then((body) => {

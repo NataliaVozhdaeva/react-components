@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ErrorBtn } from './error-btn';
 import { HeaderProps } from '../../services/interfaces';
 import './search-bar.css';
@@ -6,6 +6,11 @@ import './header.css';
 
 export function Header({ callbackSearch }: HeaderProps): JSX.Element {
   const [term, setTerm] = useState('');
+
+  useEffect(() => {
+    const savedTerm = localStorage.getItem('term') || '';
+    setTerm(savedTerm);
+  }, []);
 
   const searchHandler = () => {
     callbackSearch(term);
@@ -29,6 +34,7 @@ export function Header({ callbackSearch }: HeaderProps): JSX.Element {
             type="text"
             onChange={handleInput}
             data-testid="search-input"
+            value={term}
           />
           <button type="button" className="btn" onClick={searchHandler}>
             Search
