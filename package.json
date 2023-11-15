@@ -17,6 +17,11 @@
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test:coverage"
+    }
+  },
   "dependencies": {
     "enzyme-to-json": "^3.6.2",
     "react": "^18.2.0",
