@@ -17,11 +17,6 @@
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run test"
-    }
-  },
   "dependencies": {
     "enzyme-to-json": "^3.6.2",
     "react": "^18.2.0",
@@ -60,6 +55,12 @@
     "vite": "^4.4.5",
     "vitest": "^0.34.6",
     "vitest-dom": "^0.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
   },
   "lint-staged": {
     "*.tsx": [
