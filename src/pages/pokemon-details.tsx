@@ -7,13 +7,13 @@ const PokemonDetails = () => {
 
   const renderDetais = (data: Pokemon) => {
     return (
-      <div className="card main-card">
+      <div className="card main-card" data-testid="details">
         <Link to="/">
           <button className="btn btn-close">X</button>
         </Link>
-        <span>{data.name.toLocaleUpperCase()}</span>
-        <img src={data.img} width={300} />
-        <div className="abilities">
+        <span data-testid="details-name">{data.name.toLocaleUpperCase()}</span>
+        <img data-testid="details-img" src={data.img} width={300} />
+        <div data-testid="details-abilities" className="abilities">
           <h4>Abilities: </h4>
           <ul className="abilities-list">
             {abilities.map((el) => {
