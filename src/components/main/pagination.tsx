@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import { PaginationProps } from '../../services/interfaces';
+import { PaginationProps, PageProps } from '../../services/interfaces';
+import { pageActions } from '../../store/store-page';
+import { useDispatch, useSelector } from 'react-redux';
+
 import './pagination.css';
 
 const Pagination = ({ callbackPage }: PaginationProps) => {
-  const [currentPage, setPage] = useState(1);
+  const dispatch = useDispatch();
+  const currentPage = useSelector((state: PageProps) => state.currentPage);
   const [limit, setLimit] = useState(20);
 
   useEffect(() => {
@@ -11,11 +15,11 @@ const Pagination = ({ callbackPage }: PaginationProps) => {
   }, [currentPage, limit]);
 
   const pagePlus = () => {
-    setPage((currentPage) => currentPage + 1);
+    dispatch(pageActions.pagePlus());
   };
 
   const pageMinus = () => {
-    setPage((currentPage) => currentPage - 1);
+    dispatch(pageActions.pageMinus());
   };
 
   const getLimit = (e: React.ChangeEvent<HTMLInputElement>) => {

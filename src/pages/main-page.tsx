@@ -4,7 +4,6 @@ import { Item, Pokemon } from '../services/interfaces';
 import { ItemCard } from '../components/main/item-card';
 import { getDetails } from '../services/api';
 import { PokemonlistContext } from '../context/app-context';
-
 import './main-page.css';
 
 const MainPage = () => {

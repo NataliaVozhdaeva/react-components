@@ -2,8 +2,13 @@ interface HeaderProps {
   callbackSearch: (search: string) => void;
 }
 
+interface PageProps {
+  currentPage: number;
+  limit: number;
+}
+
 interface PaginationProps {
-  callbackPage: (pageNumber: number, limit: number) => void;
+  callbackPage: (currentPage: number, limit: number) => void;
 }
 
 interface MainProps {
@@ -60,4 +65,5 @@ export type {
   CardProps,
   MainProps,
   Abilities,
+  PageProps,
 };
