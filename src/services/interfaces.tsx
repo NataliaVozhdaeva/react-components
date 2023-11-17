@@ -3,8 +3,11 @@ interface HeaderProps {
 }
 
 interface PageProps {
-  currentPage: number;
-  limit: number;
+  pagination: { currentPage: number; limit: number };
+}
+
+interface AppProps {
+  loading: { isFetching: boolean };
 }
 
 interface PaginationProps {
@@ -66,4 +69,5 @@ export type {
   MainProps,
   Abilities,
   PageProps,
+  AppProps,
 };

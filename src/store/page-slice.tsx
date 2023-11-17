@@ -1,14 +1,14 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialStateOfPagintion = {
+const initialStateOfPagination = {
   currentPage: 1,
   limit: 20,
 };
 
 const pageSlice = createSlice({
   name: 'Pagination',
-  initialState: initialStateOfPagintion,
+  initialState: initialStateOfPagination,
   reducers: {
     pagePlus(state) {
       {
@@ -26,9 +26,5 @@ const pageSlice = createSlice({
   },
 });
 
-const pageStore = configureStore({
-  reducer: pageSlice.reducer,
-});
-
 export const pageActions = pageSlice.actions;
-export default pageStore;
+export default pageSlice;

@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 import { PaginationProps, PageProps } from '../../services/interfaces';
-import { pageActions } from '../../store/store-page';
+import { pageActions } from '../../store/page-slice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './pagination.css';
 
 const Pagination = ({ callbackPage }: PaginationProps) => {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state: PageProps) => state.currentPage);
-  const limit = useSelector((state: PageProps) => state.limit);
+  const currentPage = useSelector(
+    (state: PageProps) => state.pagination.currentPage
+  );
+  const limit = useSelector((state: PageProps) => state.pagination.limit);
 
   useEffect(() => {
     callbackPage(currentPage, limit);
@@ -23,7 +25,6 @@ const Pagination = ({ callbackPage }: PaginationProps) => {
   };
 
   const getLimit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //setLimit(Number(e.target.value));
     dispatch(pageActions.changeLimit(Number(e.target.value)));
   };
 
