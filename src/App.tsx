@@ -1,23 +1,29 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+/* import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getResource, search } from './services/api';
-import { Item, AppProps } from './services/interfaces';
-import { Header } from './components/header/header';
+import { loaderAction } from './store/loader-slice';
+import { pokeListActions } from './store/pokeList-slice';
+import { PokemonlistContext } from './context/app-context'; 
+import { AppProps } from './services/interfaces';
+import { Header } from './components/header/header';*/
 import { MainPage } from './pages/main-page';
 import { PokemonDetails } from './pages/pokemon-details';
 import { NotFoundPage } from './pages/not-found';
-import { PokemonlistContext } from './context/app-context';
-import { Pagination } from './components/main/pagination';
-import { loaderAction } from './store/loader-slice';
+//import { Pagination } from './components/main/pagination';
+//import { useGetPokeListQuery } from './services/api';
 
 export function App(): JSX.Element {
-  const dispatch = useDispatch();
-  const isFetching = useSelector((state: AppProps) => state.loading.isFetching);
+  //const { data, isLoading, error } = useGetPokeListQuery('');
+  //const dispatch = useDispatch();
+  //const isFetching = useSelector((state: AppProps) => state.loading.isFetching);
 
-  const [description, setDescription] = useState<Item[]>([]);
+  //const pokelist = useSelector((state: AppProps) => state.pokeList.pokelist);
+  //const [description, setDescription] = useState<Item[]>([]);
+  //const description = useSelector((state: AppProps) => state.pokeList.pokelist)
+  //console.log('description ',description )
 
-  useEffect(() => {
+  /*   useEffect(() => {
     getData('');
   }, []);
 
@@ -25,20 +31,20 @@ export function App(): JSX.Element {
     const addUrl = link ? link : '';
     getResource(addUrl)
       .then((body) => {
-        setDescription(body.results);
+        //setDescription(body.results);
       })
-      .then(() => dispatch(loaderAction.loaderToggler()));
-  };
+      //.then(() => dispatch(loaderAction.loaderToggler()));
+  }; 
 
   const pageHandler = (currentPage = 1, limit = 20) => {
     getData(`?limit=${limit}&offset=${limit * currentPage - limit}`);
-  };
+  };*/
 
-  const searchHandler = (term = localStorage.getItem('term')) => {
+  /*  const searchHandler = (term = localStorage.getItem('term')) => {
     if (!term) {
       getData('');
     } else {
-      search(term)
+     search(term)
         .then((body) => {
           setDescription([
             {
@@ -54,25 +60,25 @@ export function App(): JSX.Element {
               url: `https://pokeapi.co/api/v2/pokemon/*`,
             },
           ]);
-        });
+        }); 
     }
-  };
+  };*/
 
   return (
-    <PokemonlistContext.Provider value={description}>
-      <Header callbackSearch={searchHandler} />
-      {!isFetching ? (
+    <>
+      {/* <Header callbackSearch={searchHandler} /> */}
+      {/* {!isFetching ? (
         <img src="./img/charmander-chases-tail.gif" width={100} />
       ) : (
         ''
-      )}
+      )} */}
       <Routes>
         <Route path="/" element={<MainPage />}>
           <Route path="/:name" element={<PokemonDetails />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <Pagination callbackPage={pageHandler} />
-    </PokemonlistContext.Provider>
+      {/*       <Pagination callbackPage={pageHandler} /> */}
+    </>
   );
 }

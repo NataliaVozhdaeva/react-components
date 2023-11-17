@@ -1,21 +1,21 @@
-import { useEffect } from 'react';
-import { PaginationProps, PageProps } from '../../services/interfaces';
+//import { useEffect } from 'react';
+import { /* PaginationProps,  */ PageProps } from '../../services/interfaces';
 import { pageActions } from '../../store/page-slice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './pagination.css';
 
-const Pagination = ({ callbackPage }: PaginationProps) => {
+const Pagination = (/* { callbackPage }: PaginationProps */) => {
   const dispatch = useDispatch();
   const currentPage = useSelector(
     (state: PageProps) => state.pagination.currentPage
   );
   const limit = useSelector((state: PageProps) => state.pagination.limit);
-
+  /* 
   useEffect(() => {
     callbackPage(currentPage, limit);
   }, [currentPage, limit]);
-
+ */
   const pagePlus = () => {
     dispatch(pageActions.pagePlus());
   };

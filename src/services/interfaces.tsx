@@ -8,6 +8,7 @@ interface PageProps {
 
 interface AppProps {
   loading: { isFetching: boolean };
+  pokeList: { pokelist: Item[] };
 }
 
 interface PaginationProps {
@@ -36,6 +37,10 @@ interface Item {
   url: string;
 }
 
+interface FetchBody {
+  results: [];
+}
+
 interface CardProps {
   item: Item;
 
@@ -48,7 +53,7 @@ interface OutletProps {
 
 type Pokemon = {
   name: string;
-  img: string;
+  sprites: { other: { dream_world: { front_default: string } } };
   abilities: [];
 };
 
@@ -70,4 +75,5 @@ export type {
   Abilities,
   PageProps,
   AppProps,
+  FetchBody,
 };

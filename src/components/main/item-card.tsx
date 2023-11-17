@@ -1,33 +1,18 @@
-import { CardProps, Pokemon } from '../../services/interfaces';
-import { getDetails } from '../../services/api';
-import { useState, useEffect } from 'react';
+import { CardProps } from '../../services/interfaces';
+import { useGetPokemonByNameQuery } from '../../services/api';
 
 const ItemCard = ({ item }: CardProps) => {
   const pokemonName = item.name;
-  const [details, setDetails] = useState<Pokemon>({
-    name: '',
-    img: '',
-    abilities: [],
-  });
-
-  useEffect(() => {
-    getDataDetails(item.url);
-  }, []);
-
-  const getDataDetails = (value: string) => {
-    getDetails(value).then((body) => {
-      setDetails({
-        name: body.name,
-        img: body.sprites.other.dream_world.front_default,
-        abilities: body.abilities,
-      });
-    });
-  };
+  const { data } = useGetPokemonByNameQuery(item.url);
 
   return (
     <div className="card" data-testid="card-element">
       <span className="name">{pokemonName}</span>
-      <img className="view" src={details.img} width="100" />
+      <img
+        className="view"
+        src={data ? data.sprites.other.dream_world.front_default : ''}
+        width="100"
+      />
     </div>
   );
 };

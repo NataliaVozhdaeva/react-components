@@ -1,8 +1,24 @@
 import API_PATH from './constants';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { Pokemon, fetchBody } from './interfaces';
 
 const base = API_PATH;
 
-const getResource = async (url: string | undefined) => {
+export const pokemonsApi = createApi({
+  reducerPath: 'pokemonsApi',
+  baseQuery: fetchBaseQuery({ baseUrl: base }),
+  endpoints: (builder) => ({
+    getPokeList: builder.query<fetchBody, string>({
+      query: () => '',
+    }),
+    getPokemonByName: builder.query<Pokemon, string>({
+      query: (name) => `${name}`,
+    }),
+  }),
+});
+
+export const { useGetPokeListQuery, useGetPokemonByNameQuery } = pokemonsApi;
+/* const getResource = async (url: string | undefined) => {
   if (!url) url = '';
   const res = await fetch(`${base}${url}`);
 
@@ -10,7 +26,8 @@ const getResource = async (url: string | undefined) => {
     throw new Error('error');
   }
   return res.json();
-};
+}; 
+
 
 const getDetails = async (url: string) => {
   const res = await fetch(url);
@@ -27,6 +44,4 @@ const search = async (term: string) => {
     throw new Error("we haven't got this pokemon");
   }
   return res.json();
-};
-
-export { getResource, getDetails, search };
+}; */
