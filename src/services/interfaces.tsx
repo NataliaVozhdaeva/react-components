@@ -54,6 +54,7 @@ interface OutletProps {
 type Pokemon = {
   name: string;
   sprites: { other: { dream_world: { front_default: string } } };
+  //img: string
   abilities: [];
 };
 
