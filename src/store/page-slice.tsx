@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialStateOfPagination = {
   currentPage: 1,
-  limit: 20,
+  limit: 9,
 };
 
 const pageSlice = createSlice({

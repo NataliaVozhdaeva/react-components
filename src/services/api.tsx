@@ -1,6 +1,6 @@
 import API_PATH from './constants';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Pokemon, FetchBody } from './interfaces';
+import { FetchBody } from './interfaces';
 
 const base = API_PATH;
 
@@ -11,10 +11,7 @@ export const pokemonsApi = createApi({
     getPokeList: builder.query<FetchBody, string>({
       query: (name) => `${name}`,
     }),
-    getPokemonByName: builder.query<Pokemon, string>({
-      query: (name) => `${name}`,
-    }),
   }),
 });
 
-export const { useGetPokeListQuery, useGetPokemonByNameQuery } = pokemonsApi;
+export const { useGetPokeListQuery } = pokemonsApi;

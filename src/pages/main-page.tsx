@@ -2,28 +2,29 @@ import { Link, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useGetPokeListQuery } from '../services/api';
 import { ItemCard } from '../components/main/item-card';
-import { FetchBody, Term, Pokemon } from '../services/interfaces';
+import { FetchBody, Term, Limit, PageProps } from '../services/interfaces';
 
 import './main-page.css';
 
 const MainPage = () => {
   const term = useSelector((state: Term) => state.search.term);
-  const { error, data, isLoading } = useGetPokeListQuery(term);
-  console.log('term ', term);
+  const limit = useSelector((state: Limit) => state.pagination.limit);
+  const currentPage = useSelector(
+    (state: PageProps) => state.pagination.currentPage
+  );
+  const { error, data, isLoading } = useGetPokeListQuery(
+    term + `?limit=${limit}&offset=${limit * currentPage - limit}`
+  );
 
-  const renderDefault = (data: FetchBody | Pokemon) => {
-    console.log('data ', data);
+  const renderDefault = (data: FetchBody) => {
     if (term !== '') {
-      const currentData = data as Pokemon;
       return (
-        <Link className="link" to={currentData.name}>
-          <ItemCard item={currentData.name} />
+        <Link className="link" to={data.name}>
+          <ItemCard item={data.name} />
         </Link>
       );
     } else {
-      const currentData = data as FetchBody;
-
-      return Object.values(currentData.results).map((item) => {
+      return Object.values(data.results).map((item) => {
         return (
           <Link className="link" to={item.name} key={item.name}>
             <ItemCard item={item.name} />

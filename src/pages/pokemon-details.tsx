@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom';
-import { Pokemon, Abilities } from '../services/interfaces';
+import { Abilities, FetchBody } from '../services/interfaces';
 import { useParams } from 'react-router-dom';
-import { useGetPokemonByNameQuery } from '../services/api';
+import { useGetPokeListQuery } from '../services/api';
 
 const PokemonDetails = () => {
   const params = useParams<{ name: string }>();
   if (!params.name) throw new Error('params');
-  const { data, isLoading } = useGetPokemonByNameQuery(params.name);
+  const { data, isLoading } = useGetPokeListQuery(params.name);
   let img: string;
   if (data) {
     img = data.sprites.other.dream_world.front_default;
   }
 
-  const renderDetais = (data: Pokemon) => {
+  const renderDetais = (data: FetchBody) => {
     return (
       <>
         <Link to="/">

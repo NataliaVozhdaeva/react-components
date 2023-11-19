@@ -1,21 +1,16 @@
-//import { useEffect } from 'react';
-import { /* PaginationProps,  */ PageProps } from '../../services/interfaces';
-import { pageActions } from '../../store/page-slice';
 import { useDispatch, useSelector } from 'react-redux';
+import { pageActions } from '../../store/page-slice';
+import { PageProps } from '../../services/interfaces';
 
 import './pagination.css';
 
-const Pagination = (/* { callbackPage }: PaginationProps */) => {
+const Pagination = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector(
     (state: PageProps) => state.pagination.currentPage
   );
   const limit = useSelector((state: PageProps) => state.pagination.limit);
-  /* 
-  useEffect(() => {
-    callbackPage(currentPage, limit);
-  }, [currentPage, limit]);
- */
+
   const pagePlus = () => {
     dispatch(pageActions.pagePlus());
   };
@@ -46,11 +41,12 @@ const Pagination = (/* { callbackPage }: PaginationProps */) => {
         <input
           id="itemAmount"
           type="range"
-          step="5"
-          min="5"
-          max="20"
+          step="3"
+          min="3"
+          max="12"
           className="range"
           onChange={getLimit}
+          defaultValue={9}
         />
         <span>{limit}</span>
       </div>

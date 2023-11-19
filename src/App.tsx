@@ -3,6 +3,7 @@ import { Header } from './components/header/header';
 import { MainPage } from './pages/main-page';
 import { PokemonDetails } from './pages/pokemon-details';
 import { NotFoundPage } from './pages/not-found';
+import { Pagination } from './components/main/pagination';
 
 export function App(): JSX.Element {
   return (
@@ -14,7 +15,7 @@ export function App(): JSX.Element {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      {/*       <Pagination callbackPage={pageHandler} /> */}
+      <Pagination /* callbackPage={pageHandler} */ />
     </>
   );
 }

@@ -19,6 +19,10 @@ interface Term {
   search: { term: string };
 }
 
+interface Limit {
+  pagination: { limit: number };
+}
+
 interface ErrorState {
   hasError: boolean;
 }
@@ -33,14 +37,11 @@ interface Item {
 }
 
 interface FetchBody {
-  results: Item[] | Pokemon;
-}
-
-type Pokemon = {
-  name: string;
+  results: Item[];
   sprites: { other: { dream_world: { front_default: string } } };
+  name: string;
   abilities: [];
-};
+}
 
 type Abilities = {
   ability: { name: string; url: string };
@@ -54,7 +55,6 @@ export type {
   CardProps,
   ErrorState,
   ErrorProps,
-  Pokemon,
   PaginationProps,
   Term,
   Abilities,
@@ -62,4 +62,5 @@ export type {
   AppProps,
   FetchBody,
   HeaderProps,
+  Limit,
 };
