@@ -1,9 +1,9 @@
-import { CardProps } from '../../services/interfaces';
 import { useGetPokemonByNameQuery } from '../../services/api';
+import { CardProps } from '../../services/interfaces';
 
 const ItemCard = ({ item }: CardProps) => {
-  const pokemonName = item.name;
-  const { data } = useGetPokemonByNameQuery(item.url);
+  const pokemonName = item;
+  const { data } = useGetPokemonByNameQuery(item);
 
   return (
     <div className="card" data-testid="card-element">

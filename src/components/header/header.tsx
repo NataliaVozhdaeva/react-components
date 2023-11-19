@@ -1,26 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchActions } from '../../store/search-slice';
 import { ErrorBtn } from './error-btn';
-import { HeaderProps } from '../../services/interfaces';
+import { Term } from '../../services/interfaces';
+
 import './search-bar.css';
 import './header.css';
 
-export function Header({ callbackSearch }: HeaderProps): JSX.Element {
-  const [term, setTerm] = useState('');
-
-  useEffect(() => {
-    const savedTerm = localStorage.getItem('term') || '';
-    setTerm(savedTerm);
-  }, []);
-
-  const searchHandler = () => {
-    callbackSearch(term);
-  };
+export function Header(): JSX.Element {
+  const dispatch = useDispatch();
+  let term = useSelector((state: Term) => state.search.term);
 
   const handleInput = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
-    setTerm(e.target.value);
-    localStorage.setItem('term', e.target.value);
+    term = e.target.value;
+  };
+
+  const searchHandler = () => {
+    dispatch(searchActions.changeTerm(term));
   };
 
   return (
@@ -34,7 +31,6 @@ export function Header({ callbackSearch }: HeaderProps): JSX.Element {
             type="text"
             onChange={handleInput}
             data-testid="search-input"
-            value={term}
           />
           <button type="button" className="btn" onClick={searchHandler}>
             Search

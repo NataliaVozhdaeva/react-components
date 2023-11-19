@@ -96,3 +96,9 @@
 h4 {
   color: chartreuse;
 }
+
+.error-card {
+  width: 500px;
+  color: chartreuse;
+  background: rgba(0, 0, 0, 0.7);
+}

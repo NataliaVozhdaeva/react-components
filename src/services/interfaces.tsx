@@ -1,7 +1,3 @@
-interface HeaderProps {
-  callbackSearch: (search: string) => void;
-}
-
 interface PageProps {
   pagination: { currentPage: number; limit: number };
 }
@@ -11,17 +7,16 @@ interface AppProps {
   pokeList: { pokelist: Item[] };
 }
 
+interface CardProps {
+  item: string;
+}
+
 interface PaginationProps {
   callbackPage: (currentPage: number, limit: number) => void;
 }
 
-interface MainProps {
-  description: Item[];
-  limit: number;
-}
-
-interface HeaderState {
-  term: string;
+interface Term {
+  search: { term: string };
 }
 
 interface ErrorState {
@@ -38,23 +33,12 @@ interface Item {
 }
 
 interface FetchBody {
-  results: [];
-}
-
-interface CardProps {
-  item: Item;
-
-  callbackUpdate?: (name: string) => void;
-}
-
-interface OutletProps {
-  context?: unknown;
+  results: Item[] | Pokemon;
 }
 
 type Pokemon = {
   name: string;
   sprites: { other: { dream_world: { front_default: string } } };
-  //img: string
   abilities: [];
 };
 
@@ -62,19 +46,20 @@ type Abilities = {
   ability: { name: string; url: string };
 };
 
+interface HeaderProps {
+  callbackSearch: (search: string) => void;
+}
+
 export type {
-  Item,
-  HeaderProps,
-  HeaderState,
+  CardProps,
   ErrorState,
   ErrorProps,
   Pokemon,
   PaginationProps,
-  OutletProps,
-  CardProps,
-  MainProps,
+  Term,
   Abilities,
   PageProps,
   AppProps,
   FetchBody,
+  HeaderProps,
 };
