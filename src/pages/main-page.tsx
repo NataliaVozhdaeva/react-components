@@ -35,7 +35,7 @@ const MainPage = () => {
   };
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper" data-testid="main-screen">
       {error ? (
         <div className="error-card card">
           Sorry, this Pokemon doesn&#39;t exist.

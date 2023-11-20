@@ -5,8 +5,8 @@ import { useGetPokeListQuery } from '../services/api';
 
 const PokemonDetails = () => {
   const params = useParams<{ name: string }>();
-  if (!params.name) throw new Error('params');
-  const { data, isLoading } = useGetPokeListQuery(params.name);
+  // if (!params.name) throw new Error('params');
+  const { data, isLoading } = useGetPokeListQuery(params.name || '');
   let img: string;
   if (data) {
     img = data.sprites.other.dream_world.front_default;
@@ -15,7 +15,7 @@ const PokemonDetails = () => {
   const renderDetais = (data: FetchBody) => {
     return (
       <>
-        <Link to="/">
+        <Link to="/" data-testid="close-btn">
           <button className="btn btn-close">X</button>
         </Link>
         <span data-testid="details-name">{data.name.toLocaleUpperCase()}</span>

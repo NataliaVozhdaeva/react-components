@@ -2,10 +2,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { ItemCard } from '../main/item-card';
 import { BrowserRouter, Link, Outlet } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
+import { Provider } from 'react-redux';
+import store from '../../store/store';
 
 const mockItem = {
   name: 'bulbasaur',
-  url: 'https://pokeapi.co/api/v2/pokemon/1/',
 };
 const mockDetails = {
   name: 'bulbasaur',
@@ -16,10 +17,12 @@ const mockDetails = {
 const TestCard = () => {
   return (
     <BrowserRouter>
-      <Link to={mockItem.name}>
-        <ItemCard item={mockItem} />
-      </Link>
-      <Outlet context={mockDetails} />
+      <Provider store={store}>
+        <Link to={mockItem.name}>
+          <ItemCard item={mockItem.name} />
+        </Link>
+        <Outlet context={mockDetails} />
+      </Provider>
     </BrowserRouter>
   );
 };
