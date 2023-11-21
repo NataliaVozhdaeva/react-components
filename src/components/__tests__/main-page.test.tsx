@@ -1,9 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { MainPage } from '../../pages/main-page';
 import { describe, expect, it } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../store/store';
+import { MainPage } from '../../pages/main-page';
+//import store from '../../store/store';
+//import {initialStateOfPaginatio};
 
 const TestApp = () => {
   return (

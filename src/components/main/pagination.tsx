@@ -26,11 +26,21 @@ const Pagination = () => {
   return (
     <div className="pagination">
       <div className="page-contaner">
-        <button className="btn page-btn page-prev" onClick={pageMinus}>
+        <button
+          className="btn page-btn page-prev"
+          onClick={pageMinus}
+          data-testid="prev"
+        >
           &#10148;
         </button>
-        <div className="page-number">{currentPage}</div>
-        <button className="btn page-btn page-next" onClick={pagePlus}>
+        <div className="page-number" data-testid="page-text">
+          {currentPage}
+        </div>
+        <button
+          className="btn page-btn page-next"
+          onClick={pagePlus}
+          data-testid="next"
+        >
           &#10148;
         </button>
       </div>
@@ -47,6 +57,7 @@ const Pagination = () => {
           className="range"
           onChange={getLimit}
           defaultValue={9}
+          data-testid="range"
         />
         <span>{limit}</span>
       </div>
