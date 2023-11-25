@@ -1,9 +1,26 @@
 import Head from "next/head";
 import Header from "./components/header";
 import Card from "./components/card";
+import { FetchBody } from "@/services/interfaces";
 import styles from "@/styles/Home.module.css";
 
-export default function Home() {
+import API_PATH from "@/services/constants";
+const base = API_PATH;
+
+export const getServerSideProps = async () => {
+  const res = await fetch(`${base}`);
+  const data = await res.json();
+  const pokeList = data.results;
+
+  return {
+    props: {
+      pokeList,
+    },
+  };
+};
+
+export default function Home({ pokeList }: FetchBody) {
+  console.log(pokeList);
   return (
     <>
       <Head>
