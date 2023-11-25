@@ -7,7 +7,7 @@
   color: black;
 
   background-color: #213547;
-  background-image: url('/img/space.jpeg');
+  background-image: url("/img/space.jpeg");
   background-size: cover;
 }
 
@@ -82,4 +82,27 @@
 
 .btn:active {
   border-color: #1e213d #002f55 #002f55 #1e213d;
+}
+
+.card {
+  width: 230px;
+  height: 100px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: aliceblue;
+  font-size: 1.5rem;
+
+  border: 2px lightsteelblue solid;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.card:hover {
+  color: chartreuse;
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
 }
