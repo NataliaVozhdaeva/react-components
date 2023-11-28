@@ -36,6 +36,13 @@ interface Item {
   url: string;
 }
 
+interface Pokemon {
+  //sprites: { other: { dream_world: { front_default: string } } };
+  img: string;
+  name: string;
+  abilities: [];
+}
+
 interface FetchBody {
   pokeList: Item[];
   /* sprites: { other: { dream_world: { front_default: string } } };
@@ -52,6 +59,8 @@ interface HeaderProps {
 }
 
 export type {
+  Pokemon,
+  Item,
   CardProps,
   ErrorState,
   ErrorProps,
