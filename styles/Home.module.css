@@ -1,0 +1,122 @@
+.container {
+  padding: 20px;
+
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+
+  background-color: #213547;
+  background-image: url("/img/space.jpeg");
+  background-size: cover;
+}
+
+.header {
+  padding: 20px 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-error {
+  background-color: #560319;
+  border-color: #721422 #4f0014 #4f0014 #721422;
+}
+
+.btn-error:active {
+  background-color: #560319;
+  border-color: #4f0014 #721422 #721422 #4f0014;
+}
+
+.title {
+  color: aliceblue;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  box-sizing: border-box;
+  min-width: 350px;
+  min-height: 30px;
+  padding: 0 15px;
+
+  font-size: 16px;
+  color: aliceblue;
+
+  border-radius: 8px;
+  border: 1px aliceblue solid;
+  background-color: transparent;
+
+  outline: none;
+}
+
+.search-bar:focus {
+  border: 2px solid chartreuse;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.search-container {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  box-sizing: border-box;
+  padding: 10px 15px;
+
+  color: aliceblue;
+  font-weight: 700;
+
+  border: 5px solid;
+  border-color: #002f55 #1e213d #1e213d #002f55;
+  background-color: #0e294b;
+
+  border-radius: 10px;
+}
+
+.btn:hover {
+  color: chartreuse;
+  cursor: pointer;
+}
+
+.btn:active {
+  border-color: #1e213d #002f55 #002f55 #1e213d;
+}
+
+.card {
+  width: 230px;
+  height: 100px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: aliceblue;
+  font-size: 1.5rem;
+
+  border: 2px lightsteelblue solid;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.card:hover {
+  color: chartreuse;
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.card-container,
+.card-container-inside {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-container {
+  margin-top: 50px;
+  max-width: 50%;
+  min-height: 400px;
+  align-items: center;
+}
