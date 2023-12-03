@@ -13,7 +13,6 @@
     "preview": "vite preview",
     "format:fix": "prettier ./src --write",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky install",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "postinstall": "chmod +x .husky/*"
