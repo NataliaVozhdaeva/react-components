@@ -1,0 +1,104 @@
+.main-content {
+  margin: 100px 50px;
+}
+
+.card-container,
+.card-container-inside {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-container {
+  max-width: 50%;
+  min-height: 400px;
+  align-items: center;
+}
+
+.card-container-inside {
+  width: 50%;
+}
+
+.card {
+  width: 230px;
+  height: 100px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: aliceblue;
+  font-size: 1.5rem;
+
+  border: 2px lightsteelblue solid;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.link :hover {
+  color: chartreuse;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.main-card {
+  width: 100%;
+  min-height: 300px;
+  padding: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.main-card > img {
+  max-height: 100%;
+}
+
+.btn-close {
+  background-color: chartreuse;
+  color: #0e294b;
+  margin-bottom: 50px;
+  width: 50px;
+  align-self: center;
+}
+
+.btn-close:hover {
+  color: #0e294b;
+}
+
+.abilities {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.abilities-list {
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  list-style: none;
+}
+
+h4 {
+  color: chartreuse;
+}
+
+.error-card {
+  width: 500px;
+  color: chartreuse;
+  background: rgba(0, 0, 0, 0.7);
+}

@@ -1,0 +1,56 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: #213547;
+  background-image: url('./img/space.jpeg');
+  background-size: cover;
+}
+
+#root {
+  max-width: 95vw;
+  margin: auto;
+}
+
+.link,
+.link:visited {
+  height: auto;
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  margin-bottom: 50px;
+  color: wheat;
+}
+
+.main-wrapper {
+  margin-top: 50px;
+}
+
+.page-prev {
+  transform: rotate(180deg);
+}
+
+.wrapper-outlet {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
