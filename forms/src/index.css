@@ -102,6 +102,21 @@ body {
   border-color: black;
 }
 
+.error {
+  padding: 15px;
+  color: tomato;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.field-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: start;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
