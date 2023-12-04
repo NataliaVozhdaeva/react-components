@@ -66,6 +66,42 @@ body {
   color: chartreuse;
 }
 
+.title {
+  display: inline-block;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.input,
+.btn {
+  box-sizing: border-box;
+  min-height: 30px;
+  min-width: 150px;
+  margin: 25px;
+  padding: 15px;
+  border-radius: 20px;
+  outline: none;
+  border: 2px solid #1e8c45;
+}
+
+.input:focus {
+  border-color: black;
+}
+
+.btn {
+  color: #1e8c45;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: chartreuse;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: black;
+  border-color: black;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

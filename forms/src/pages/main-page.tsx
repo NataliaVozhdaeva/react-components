@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 const MainPage = () => {
   return (
     <div className="main-wrapper">
-      главная
+      <h2 className="title">Fill the form below</h2>
       <div className="link-container">
         <Link to="withreactform" className="link link-to-form">
-          fill with reactform
+          Fill with reactform
         </Link>
         <Link to="withoutreactform" className="link link-to-form">
-          fill without reactform
+          Fill without reactform
         </Link>
       </div>
     </div>

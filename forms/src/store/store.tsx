@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import hookFormSlice from './hookForm-slice';
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    search: hookFormSlice.reducer,
+  },
 });
 
 export default store;
