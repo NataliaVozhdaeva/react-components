@@ -1,10 +1,11 @@
-export default interface IFormFields {
-  name: string;
-  password: string;
-  passwordCheck: string;
-  age: number;
-  email: string;
-  checkbox: boolean;
-  country: string;
-  //file: ?
+interface IFormFields {
+  name: string,
+  password: string,
+  passwordCheck: string,
+  age: number,
+  email: string,
+  countries: string[],
+  country: string
 }
+
+export type {IFormFields }

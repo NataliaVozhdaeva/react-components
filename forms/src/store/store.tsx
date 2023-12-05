@@ -3,7 +3,7 @@ import hookFormSlice from './hookForm-slice';
 
 const store = configureStore({
   reducer: {
-    search: hookFormSlice.reducer,
+    dataHook: hookFormSlice.reducer,
   },
 });
 

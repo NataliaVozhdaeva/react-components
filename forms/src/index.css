@@ -117,6 +117,27 @@ body {
   justify-content: start;
 }
 
+.hidden {
+  display: none;
+}
+
+.form{
+  position: relative;
+}
+
+.form ul{
+  position: absolute;
+  bottom: 70px;
+  left: 70px;
+
+}
+
+
+
+.country{
+  list-style: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
