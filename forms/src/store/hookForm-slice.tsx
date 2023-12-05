@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import {IFormFields} from '../intefaces';
+import { IFormFields } from '../intefaces';
 import store from './store';
 
-const countries = ['Krakozia', 'Tilimilitryamdiya']
+const countries = ['Krakozia', 'Tilimilitryamdiya'];
 
 const initialStateOfForm: IFormFields = {
   name: '',
@@ -12,7 +12,8 @@ const initialStateOfForm: IFormFields = {
   age: 18,
   email: '',
   countries: countries,
-  country:''
+  country: '',
+  isFilled: false,
 };
 
 const hookFormSlice = createSlice({
@@ -20,39 +21,43 @@ const hookFormSlice = createSlice({
   initialState: initialStateOfForm,
   reducers: {
     updateName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload
+      state.name = action.payload;
     },
     updateAge: (state, action: PayloadAction<number>) => {
-      state.age = action.payload
+      state.age = action.payload;
     },
     updateEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload
+      state.email = action.payload;
     },
     updatePassword: (state, action: PayloadAction<string>) => {
-      state.password = action.payload
+      state.password = action.payload;
     },
-    updatePasswordDub: (state, action: PayloadAction<string>) => {
-      state.passwordCheck = action.payload
+    updatePasswordCheck: (state, action: PayloadAction<string>) => {
+      state.passwordCheck = action.payload;
     },
     updateCountry: (state, action: PayloadAction<string>) => {
-      state.country = action.payload
+      state.country = action.payload;
     },
     updateCountries: (state, action: PayloadAction<string[]>) => {
-      state.countries = action.payload
+      state.countries = action.payload;
     },
+    updateIsFilled: (state, action: PayloadAction<boolean>) => {
+      state.isFilled = action.payload;
     },
-  });
+  },
+});
 
-  export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 
 export const {
   updateName,
   updateAge,
   updateEmail,
   updatePassword,
-  updatePasswordDub,
+  updatePasswordCheck,
   updateCountry,
   updateCountries,
+  updateIsFilled,
 } = hookFormSlice.actions;
 
 export default hookFormSlice;
